@@ -79,7 +79,7 @@ function readConfig() {
     calendarId: process.env.GOOGLE_CALENDAR_ID?.trim() || "",
     serviceAccountEmail:
       process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL?.trim() || "",
-    privateKey: (process.env.GOOGLE_PRIVATE_KEY ?? "").replace(/\\n/g, "\n"),
+    privateKey: normalizePrivateKey(process.env.GOOGLE_PRIVATE_KEY ?? ""),
   };
 
   if (!dryRun) {
@@ -95,6 +95,30 @@ function readConfig() {
   }
 
   return config;
+}
+
+function normalizePrivateKey(value) {
+  let normalized = value.trim();
+
+  if (
+    (normalized.startsWith('"') && normalized.endsWith('"')) ||
+    (normalized.startsWith("'") && normalized.endsWith("'"))
+  ) {
+    normalized = normalized.slice(1, -1);
+  }
+
+  normalized = normalized.replace(/\\n/g, "\n").replace(/\r\n/g, "\n");
+
+  if (
+    normalized &&
+    !normalized.includes("-----BEGIN PRIVATE KEY-----")
+  ) {
+    throw new Error(
+      "GOOGLE_PRIVATE_KEY does not look like a PEM private key. Paste the full private_key value from the service account JSON, including BEGIN/END lines.",
+    );
+  }
+
+  return normalized;
 }
 
 function normalizeEventDate(value) {
