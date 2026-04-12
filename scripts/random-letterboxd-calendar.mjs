@@ -15,14 +15,21 @@ async function main() {
   }
 
   const pickedMovie = movies[randomInt(movies.length)];
+  const movieDetails = await fetchMovieDetails(pickedMovie.link);
   const eventWindow = buildEventWindow(config);
-  const event = buildCalendarEvent(pickedMovie, config, eventWindow);
+  const event = buildCalendarEvent(
+    pickedMovie,
+    movieDetails,
+    config,
+    eventWindow,
+  );
 
   console.log(
     JSON.stringify(
       {
         scrapedMovieCount: movies.length,
         pickedMovie,
+        movieDetails,
         event,
         dryRun: config.dryRun,
       },
@@ -278,6 +285,24 @@ function buildEventWindow(config) {
   };
 }
 
+async function fetchMovieDetails(movieUrl) {
+  const html = await fetchText(movieUrl);
+  const synopsis =
+    decodeHtmlEntities(extractMetaContent(html, "property", "og:description")) ||
+    decodeHtmlEntities(extractMetaContent(html, "name", "description"));
+  const posterUrl = decodeHtmlEntities(
+    extractMetaContent(html, "property", "og:image"),
+  );
+  const jsonLd = extractMovieJsonLd(html);
+
+  return {
+    synopsis: synopsis || "",
+    posterUrl: posterUrl || "",
+    genres: normalizeStringList(jsonLd?.genre),
+    directors: normalizePeopleList(jsonLd?.director),
+  };
+}
+
 function resolveDefaultEventDate(config) {
   const now = getZonedDateParts(new Date(), config.eventTimezone);
   const today = `${now.year}-${pad(now.month)}-${pad(now.day)}`;
@@ -346,18 +371,36 @@ function nextWeekdayOnOrAfter(dateString, weekday, options = {}) {
   return addDays(dateString, daysUntil);
 }
 
-function buildCalendarEvent(movie, config, eventWindow) {
+function buildCalendarEvent(movie, movieDetails, config, eventWindow) {
   const eventId = buildStableEventId(movie, eventWindow.targetDate);
+  const descriptionLines = [
+    "Random movie picked from a Letterboxd watchlist.",
+    `Movie: ${movie.displayName}`,
+  ];
+
+  if (movieDetails.directors.length > 0) {
+    descriptionLines.push(`Director: ${movieDetails.directors.join(", ")}`);
+  }
+
+  if (movieDetails.genres.length > 0) {
+    descriptionLines.push(`Genres: ${movieDetails.genres.join(", ")}`);
+  }
+
+  if (movieDetails.synopsis) {
+    descriptionLines.push(`Synopsis: ${movieDetails.synopsis}`);
+  }
+
+  if (movieDetails.posterUrl) {
+    descriptionLines.push(`Poster: ${movieDetails.posterUrl}`);
+  }
+
+  descriptionLines.push(`Letterboxd: ${movie.link}`);
+  descriptionLines.push(`Watchlist: ${config.watchlistUrl}`);
 
   return {
     id: eventId,
     summary: `Watch: ${movie.displayName}`,
-    description: [
-      "Random movie picked from a Letterboxd watchlist.",
-      `Movie: ${movie.displayName}`,
-      `Letterboxd: ${movie.link}`,
-      `Watchlist: ${config.watchlistUrl}`,
-    ].join("\n"),
+    description: descriptionLines.join("\n"),
     source: {
       title: "Letterboxd Watchlist",
       url: movie.link,
@@ -511,6 +554,63 @@ function toBase64Url(buffer) {
 
 function pad(value) {
   return String(value).padStart(2, "0");
+}
+
+function extractMetaContent(html, attributeName, attributeValue) {
+  const escapedValue = attributeValue.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  const match = html.match(
+    new RegExp(
+      `<meta[^>]*${attributeName}="${escapedValue}"[^>]*content="([^"]*)"[^>]*>`,
+      "i",
+    ),
+  );
+
+  return match?.[1] ?? "";
+}
+
+function extractMovieJsonLd(html) {
+  const scripts = [...html.matchAll(
+    /<script type="application\/ld\+json">([\s\S]*?)<\/script>/gi,
+  )];
+
+  for (const [, rawJson] of scripts) {
+    try {
+      const parsed = JSON.parse(rawJson);
+      if (parsed?.["@type"] === "Movie") {
+        return parsed;
+      }
+    } catch {
+      // Ignore non-JSON or unrelated JSON-LD blocks.
+    }
+  }
+
+  return null;
+}
+
+function normalizeStringList(value) {
+  if (Array.isArray(value)) {
+    return value.filter((item) => typeof item === "string" && item.trim());
+  }
+
+  if (typeof value === "string" && value.trim()) {
+    return [value];
+  }
+
+  return [];
+}
+
+function normalizePeopleList(value) {
+  const values = Array.isArray(value) ? value : [value];
+
+  return values
+    .map((person) => {
+      if (typeof person === "string") {
+        return person;
+      }
+
+      return person?.name ?? "";
+    })
+    .filter(Boolean);
 }
 
 main().catch((error) => {
