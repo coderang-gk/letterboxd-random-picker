@@ -22,10 +22,10 @@ The workflow lives at:
 
 It supports:
 
-- Daily scheduled runs at `09:07` in the `Asia/Kolkata` timezone.
+- Weekly scheduled runs every Sunday at `22:30` in the `Asia/Kolkata` timezone.
 - Manual runs with optional inputs for watchlist URL, event date, timezone, start time, duration, and dry-run mode.
 
-By default, the workflow creates a calendar event for `20:00` in `Asia/Kolkata` with a duration of `150` minutes.
+By default, the workflow creates a calendar event for `22:30` in `Asia/Kolkata` with a duration of `150` minutes.
 
 ## Required GitHub Secrets
 
