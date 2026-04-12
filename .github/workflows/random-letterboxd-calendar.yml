@@ -1,0 +1,77 @@
+name: Letterboxd Random Movie Calendar
+
+on:
+  workflow_dispatch:
+    inputs:
+      watchlist_url:
+        description: "Letterboxd watchlist URL"
+        required: false
+        default: "https://letterboxd.com/coderang/watchlist/"
+        type: string
+      event_date:
+        description: "Optional event date in YYYY-MM-DD"
+        required: false
+        default: ""
+        type: string
+      event_timezone:
+        description: "IANA timezone for the calendar event"
+        required: false
+        default: "Asia/Kolkata"
+        type: string
+      event_start_hour:
+        description: "24-hour clock hour for the event start"
+        required: false
+        default: "20"
+        type: string
+      event_start_minute:
+        description: "Minute for the event start"
+        required: false
+        default: "0"
+        type: string
+      event_duration_minutes:
+        description: "Event duration in minutes"
+        required: false
+        default: "150"
+        type: string
+      dry_run:
+        description: "Scrape and pick a movie without creating a calendar event"
+        required: false
+        default: false
+        type: boolean
+  schedule:
+    - cron: "7 9 * * *"
+      timezone: "Asia/Kolkata"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: letterboxd-random-movie-calendar
+  cancel-in-progress: false
+
+jobs:
+  create-event:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      WATCHLIST_URL: ${{ github.event.inputs.watchlist_url }}
+      EVENT_DATE: ${{ github.event.inputs.event_date }}
+      EVENT_TIMEZONE: ${{ github.event.inputs.event_timezone }}
+      EVENT_START_HOUR: ${{ github.event.inputs.event_start_hour }}
+      EVENT_START_MINUTE: ${{ github.event.inputs.event_start_minute }}
+      EVENT_DURATION_MINUTES: ${{ github.event.inputs.event_duration_minutes }}
+      DRY_RUN: ${{ github.event.inputs.dry_run }}
+      GOOGLE_CALENDAR_ID: ${{ secrets.GOOGLE_CALENDAR_ID }}
+      GOOGLE_SERVICE_ACCOUNT_EMAIL: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_EMAIL }}
+      GOOGLE_PRIVATE_KEY: ${{ secrets.GOOGLE_PRIVATE_KEY }}
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Pick a random movie and create calendar event
+        run: node scripts/random-letterboxd-calendar.mjs
