@@ -281,21 +281,18 @@ function buildEventWindow(config) {
 function resolveDefaultEventDate(config) {
   const now = getZonedDateParts(new Date(), config.eventTimezone);
   const today = `${now.year}-${pad(now.month)}-${pad(now.day)}`;
-  const nowMinutes = now.hour * 60 + now.minute;
-  const eventMinutes = config.startHour * 60 + config.startMinute;
   const isSunday = getWeekday(today) === 0;
+  const isScheduledRun = process.env.GITHUB_EVENT_NAME === "schedule";
 
-  // If the workflow runs on Sunday, keep the event on that Sunday even if the
-  // job starts slightly after the target time.
-  if (isSunday) {
+  // Scheduled Sunday runs should create a Sunday event even if the workflow
+  // starts a bit late.
+  if (isScheduledRun && isSunday) {
     return today;
   }
 
-  if (nowMinutes > eventMinutes) {
-    return addDays(today, 1);
-  }
-
-  return today;
+  return nextWeekdayOnOrAfter(today, 0, {
+    includeToday: isSunday,
+  });
 }
 
 function getZonedDateParts(date, timeZone) {
@@ -336,6 +333,17 @@ function addDays(dateString, amount) {
 function getWeekday(dateString) {
   const date = new Date(`${dateString}T00:00:00Z`);
   return date.getUTCDay();
+}
+
+function nextWeekdayOnOrAfter(dateString, weekday, options = {}) {
+  const currentWeekday = getWeekday(dateString);
+  let daysUntil = (weekday - currentWeekday + 7) % 7;
+
+  if (daysUntil === 0 && options.includeToday === false) {
+    daysUntil = 7;
+  }
+
+  return addDays(dateString, daysUntil);
 }
 
 function buildCalendarEvent(movie, config, eventWindow) {
