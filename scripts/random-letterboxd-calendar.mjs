@@ -283,8 +283,15 @@ function resolveDefaultEventDate(config) {
   const today = `${now.year}-${pad(now.month)}-${pad(now.day)}`;
   const nowMinutes = now.hour * 60 + now.minute;
   const eventMinutes = config.startHour * 60 + config.startMinute;
+  const isSunday = getWeekday(today) === 0;
 
-  if (nowMinutes >= eventMinutes) {
+  // If the workflow runs on Sunday, keep the event on that Sunday even if the
+  // job starts slightly after the target time.
+  if (isSunday) {
+    return today;
+  }
+
+  if (nowMinutes > eventMinutes) {
     return addDays(today, 1);
   }
 
@@ -324,6 +331,11 @@ function addDays(dateString, amount) {
   const date = new Date(`${dateString}T00:00:00Z`);
   date.setUTCDate(date.getUTCDate() + amount);
   return date.toISOString().slice(0, 10);
+}
+
+function getWeekday(dateString) {
+  const date = new Date(`${dateString}T00:00:00Z`);
+  return date.getUTCDay();
 }
 
 function buildCalendarEvent(movie, config, eventWindow) {
