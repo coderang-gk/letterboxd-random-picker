@@ -4,9 +4,9 @@ on:
   workflow_dispatch:
     inputs:
       watchlist_url:
-        description: "Letterboxd watchlist URL"
+        description: "Optional Letterboxd watchlist URL override"
         required: false
-        default: "https://letterboxd.com/coderang/watchlist/"
+        default: ""
         type: string
       event_date:
         description: "Optional event date in YYYY-MM-DD"
@@ -54,7 +54,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     env:
-      WATCHLIST_URL: ${{ github.event.inputs.watchlist_url }}
+      WATCHLIST_URL: ${{ github.event.inputs.watchlist_url || vars.LETTERBOXD_WATCHLIST_URL }}
       EVENT_DATE: ${{ github.event.inputs.event_date }}
       EVENT_TIMEZONE: ${{ github.event.inputs.event_timezone }}
       EVENT_START_HOUR: ${{ github.event.inputs.event_start_hour }}

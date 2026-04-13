@@ -24,6 +24,12 @@ class WallpaperPreferences(context: Context) {
         preferences.edit().putString(KEY_LAST_APPLIED_AT, value).apply()
     }
 
+    fun getPreferredCalendarId(): Long = preferences.getLong(KEY_PREFERRED_CALENDAR_ID, -1L)
+
+    fun setPreferredCalendar(id: Long) {
+        preferences.edit().putLong(KEY_PREFERRED_CALENDAR_ID, id).apply()
+    }
+
     companion object {
         const val DEFAULT_FEED_URL =
             "https://raw.githubusercontent.com/coderang-gk/letterboxd-random-picker/main/public/latest-movie.json"
@@ -31,5 +37,6 @@ class WallpaperPreferences(context: Context) {
         private const val KEY_FEED_URL = "feed_url"
         private const val KEY_LAST_APPLIED_ID = "last_applied_id"
         private const val KEY_LAST_APPLIED_AT = "last_applied_at"
+        private const val KEY_PREFERRED_CALENDAR_ID = "preferred_calendar_id"
     }
 }

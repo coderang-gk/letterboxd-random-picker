@@ -16,9 +16,10 @@ If you want to use the full system yourself:
 1. Fork this repository.
 2. Set up a Google Cloud project, service account, and a Google Calendar the bot can edit.
 3. Add the required GitHub repository secrets.
-4. Push to `main` and run the workflow once manually.
-5. Confirm that `public/latest-movie.json` was updated and that a calendar event was created.
-6. Install the Android app from `android-app/` and point it to your published JSON feed if needed.
+4. Add the `LETTERBOXD_WATCHLIST_URL` GitHub repository variable.
+5. Push to `main` and run the workflow once manually.
+6. Confirm that `public/latest-movie.json` was updated and that a calendar event was created.
+7. Install the Android app from `android-app/` and point it to your published JSON feed if needed.
 
 ## What it does
 
@@ -56,6 +57,12 @@ Add these repository secrets in GitHub:
 - `GOOGLE_SERVICE_ACCOUNT_EMAIL`
 - `GOOGLE_PRIVATE_KEY`
 - `TMDB_API_KEY`
+
+## Required GitHub Variable
+
+Add this repository variable in GitHub:
+
+- `LETTERBOXD_WATCHLIST_URL`
 
 ## End-to-End Setup
 
@@ -105,7 +112,23 @@ In your fork, go to `Settings` -> `Secrets and variables` -> `Actions` and add:
 
 For `GOOGLE_PRIVATE_KEY`, paste the full key including the `BEGIN PRIVATE KEY` and `END PRIVATE KEY` lines.
 
-### 5. Optional repository customization
+### 5. Add your Letterboxd watchlist URL
+
+In your fork, go to `Settings` -> `Secrets and variables` -> `Actions` -> `Variables` and add:
+
+- `LETTERBOXD_WATCHLIST_URL`: your public Letterboxd watchlist URL
+
+Example:
+
+```text
+https://letterboxd.com/your-username/watchlist/
+```
+
+Scheduled runs will use this automatically.
+
+If you manually run the workflow from GitHub Actions, the optional `watchlist_url` input still overrides this value for that one run.
+
+### 6. Optional repository customization
 
 You can edit:
 
@@ -114,12 +137,11 @@ You can edit:
 
 Common customizations:
 
-- change the default Letterboxd watchlist URL
 - change the scheduled day and time
 - change the timezone
 - change the event duration
 
-### 6. Run the workflow manually the first time
+### 7. Run the workflow manually the first time
 
 1. Open the `Actions` tab in GitHub.
 2. Open the `Random Letterboxd Calendar` workflow.
@@ -127,7 +149,7 @@ Common customizations:
 4. Start with `dry_run = true` if you only want to test scraping and selection.
 5. Run again with `dry_run = false` when you want to create the calendar event and publish the JSON feed.
 
-### 7. Verify it worked
+### 8. Verify it worked
 
 Check these places:
 
@@ -142,7 +164,7 @@ You should see:
 - the poster URL
 - the synopsis and metadata
 
-### 8. Use the published feed with the Android app
+### 9. Use the published feed with the Android app
 
 The app uses the raw GitHub URL for `public/latest-movie.json`.
 

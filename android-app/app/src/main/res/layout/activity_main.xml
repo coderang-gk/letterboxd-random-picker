@@ -191,31 +191,49 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="18dp"
-                        android:orientation="horizontal"
+                        android:orientation="vertical"
                         android:paddingStart="16dp"
                         android:paddingEnd="16dp">
 
-                        <com.google.android.material.button.MaterialButton
-                            android:id="@+id/applyWallpaperButton"
-                            android:layout_width="0dp"
-                            android:layout_height="50dp"
-                            android:layout_weight="1"
-                            android:fontFamily="@font/clarity_city_medium"
-                            android:maxLines="1"
-                            android:text="@string/apply_wallpaper_short"
-                            android:textColor="@color/movie_on_accent"
-                            app:backgroundTint="@color/movie_accent" />
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <com.google.android.material.button.MaterialButton
+                                android:id="@+id/applyWallpaperButton"
+                                android:layout_width="0dp"
+                                android:layout_height="50dp"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/clarity_city_medium"
+                                android:maxLines="1"
+                                android:text="@string/apply_wallpaper_short"
+                                android:textColor="@color/movie_on_accent"
+                                app:backgroundTint="@color/movie_accent" />
+
+                            <com.google.android.material.button.MaterialButton
+                                android:id="@+id/openStremioButton"
+                                style="@style/Widget.Material3.Button.OutlinedButton"
+                                android:layout_width="0dp"
+                                android:layout_height="50dp"
+                                android:layout_marginStart="12dp"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/clarity_city_medium"
+                                android:maxLines="1"
+                                android:text="@string/open_stremio_short"
+                                android:textColor="@color/movie_accent"
+                                app:strokeColor="@color/movie_accent" />
+                        </LinearLayout>
 
                         <com.google.android.material.button.MaterialButton
-                            android:id="@+id/openStremioButton"
+                            android:id="@+id/addToCalendarButton"
                             style="@style/Widget.Material3.Button.OutlinedButton"
-                            android:layout_width="0dp"
+                            android:layout_width="match_parent"
                             android:layout_height="50dp"
-                            android:layout_marginStart="12dp"
-                            android:layout_weight="1"
+                            android:layout_marginTop="12dp"
                             android:fontFamily="@font/clarity_city_medium"
                             android:maxLines="1"
-                            android:text="@string/open_stremio_short"
+                            android:text="@string/add_to_calendar_short"
                             android:textColor="@color/movie_accent"
                             app:strokeColor="@color/movie_accent" />
                     </LinearLayout>

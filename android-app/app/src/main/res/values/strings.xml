@@ -8,13 +8,16 @@
     <string name="refresh_preview">Refresh preview</string>
     <string name="apply_wallpaper">Apply lock screen wallpaper</string>
     <string name="apply_wallpaper_short">Apply Wallpaper</string>
+    <string name="add_to_calendar_short">Add to Calendar</string>
     <string name="open_stremio">Open in Stremio</string>
     <string name="open_stremio_short">Open Stremio</string>
     <string name="poster_preview">Movie poster preview</string>
     <string name="status_idle">Ready to load the latest weekly movie.</string>
     <string name="status_loading">Loading the latest weekly movie…</string>
     <string name="status_applying">Applying wallpaper…</string>
+    <string name="status_adding_calendar">Adding calendar event…</string>
     <string name="status_applied">Wallpaper applied for %1$s</string>
+    <string name="status_calendar_added">Calendar event added for %1$s</string>
     <string name="status_loaded">Loaded movie feed: %1$s</string>
     <string name="status_failed">Failed to load movie feed: %1$s</string>
     <string name="schedule_value">Next movie night: %1$s at %2$s (%3$s)</string>
@@ -22,4 +25,9 @@
     <string name="links_value">Letterboxd: %1$s\nPoster: %2$s</string>
     <string name="no_synopsis">No synopsis available for this pick yet.</string>
     <string name="links_heading">Source Links</string>
+    <string name="calendar_permission_denied">Calendar permission is required to add events.</string>
+    <string name="calendar_pick_required">Choose a calendar for movie night events</string>
+    <string name="calendar_unavailable">No writable synced calendar was found on this device.</string>
+    <string name="calendar_saved_toast">Added to calendar.</string>
+    <string name="calendar_error_toast">Failed to add calendar event.</string>
 </resources>

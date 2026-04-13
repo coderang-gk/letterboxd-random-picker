@@ -1,23 +1,47 @@
 package com.coderang.letterboxdwallpaper
 
+import android.Manifest
 import android.content.ActivityNotFoundException
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updatePadding
 import androidx.lifecycle.lifecycleScope
 import com.coderang.letterboxdwallpaper.databinding.ActivityMainBinding
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var repository: MovieRepository
     private lateinit var preferences: WallpaperPreferences
+    private lateinit var calendarManager: DeviceCalendarManager
     private var currentMoviePick: MoviePick? = null
+    private var pendingCalendarMoviePick: MoviePick? = null
+
+    private val calendarPermissionLauncher =
+        registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) { result ->
+            val granted = REQUIRED_CALENDAR_PERMISSIONS.all { permission ->
+                result[permission] == true
+            }
+            if (granted) {
+                pendingCalendarMoviePick?.let(::addMovieToCalendar)
+            } else {
+                binding.statusText.text = getString(
+                    R.string.status_failed,
+                    getString(R.string.calendar_permission_denied),
+                )
+                toast(getString(R.string.calendar_permission_denied))
+            }
+            pendingCalendarMoviePick = null
+        }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,6 +51,7 @@ class MainActivity : AppCompatActivity() {
 
         repository = MovieRepository(this)
         preferences = repository.getPreferences()
+        calendarManager = DeviceCalendarManager(this)
 
         WallpaperScheduler.ensureScheduled(this)
 
@@ -52,6 +77,15 @@ class MainActivity : AppCompatActivity() {
         }
         binding.openStremioButton.setOnClickListener {
             currentMoviePick?.let(::openInStremio) ?: toast("Load a movie first.")
+        }
+        binding.addToCalendarButton.setOnClickListener {
+            val moviePick = currentMoviePick
+            if (moviePick == null) {
+                toast("Load a movie first.")
+                return@setOnClickListener
+            }
+
+            ensureCalendarAccessAndAdd(moviePick)
         }
 
         loadPreview()
@@ -153,6 +187,89 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    private fun ensureCalendarAccessAndAdd(moviePick: MoviePick) {
+        if (hasCalendarPermissions()) {
+            addMovieToCalendar(moviePick)
+            return
+        }
+
+        pendingCalendarMoviePick = moviePick
+        calendarPermissionLauncher.launch(REQUIRED_CALENDAR_PERMISSIONS)
+    }
+
+    private fun hasCalendarPermissions(): Boolean {
+        return REQUIRED_CALENDAR_PERMISSIONS.all { permission ->
+            ContextCompat.checkSelfPermission(this, permission) ==
+                PackageManager.PERMISSION_GRANTED
+        }
+    }
+
+    private fun addMovieToCalendar(moviePick: MoviePick) {
+        binding.statusText.text = getString(R.string.status_adding_calendar)
+
+        val calendars = runCatching { calendarManager.getWritableCalendars() }.getOrElse {
+            binding.statusText.text = getString(
+                R.string.status_failed,
+                it.message ?: getString(R.string.calendar_error_toast),
+            )
+            toast(getString(R.string.calendar_error_toast))
+            return
+        }
+
+        if (calendars.isEmpty()) {
+            binding.statusText.text = getString(
+                R.string.status_failed,
+                getString(R.string.calendar_unavailable),
+            )
+            toast(getString(R.string.calendar_unavailable))
+            return
+        }
+
+        val savedCalendarId = preferences.getPreferredCalendarId()
+        val preferredCalendar = calendars.firstOrNull { it.id == savedCalendarId }
+
+        when {
+            preferredCalendar != null -> saveCalendarEvent(moviePick, preferredCalendar)
+            calendars.size == 1 -> saveCalendarEvent(moviePick, calendars.first())
+            else -> showCalendarPicker(calendars, moviePick)
+        }
+    }
+
+    private fun showCalendarPicker(calendars: List<DeviceCalendar>, moviePick: MoviePick) {
+        val labels = calendars.map { calendar ->
+            if (calendar.accountName.isBlank()) {
+                calendar.displayName
+            } else {
+                "${calendar.displayName} (${calendar.accountName})"
+            }
+        }.toTypedArray()
+
+        MaterialAlertDialogBuilder(this)
+            .setTitle(R.string.calendar_pick_required)
+            .setItems(labels) { _, which ->
+                saveCalendarEvent(moviePick, calendars[which])
+            }
+            .show()
+    }
+
+    private fun saveCalendarEvent(moviePick: MoviePick, calendar: DeviceCalendar) {
+        runCatching {
+            calendarManager.insertEvent(moviePick, calendar.id)
+            preferences.setPreferredCalendar(calendar.id)
+            binding.statusText.text = getString(
+                R.string.status_calendar_added,
+                moviePick.movie.displayName,
+            )
+            toast(getString(R.string.calendar_saved_toast))
+        }.onFailure {
+            binding.statusText.text = getString(
+                R.string.status_failed,
+                it.message ?: getString(R.string.calendar_error_toast),
+            )
+            toast(getString(R.string.calendar_error_toast))
+        }
+    }
+
     private fun toast(message: String) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
@@ -205,5 +322,12 @@ class MainActivity : AppCompatActivity() {
             }
             add("Watchlist size: ${moviePick.scrapedMovieCount}")
         }.joinToString("\n")
+    }
+
+    companion object {
+        private val REQUIRED_CALENDAR_PERMISSIONS = arrayOf(
+            Manifest.permission.READ_CALENDAR,
+            Manifest.permission.WRITE_CALENDAR,
+        )
     }
 }

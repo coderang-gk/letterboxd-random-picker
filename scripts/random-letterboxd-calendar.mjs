@@ -80,7 +80,9 @@ async function main() {
 
 function readConfig() {
   const watchlistUrl = normalizeWatchlistUrl(
-    process.env.WATCHLIST_URL?.trim() || DEFAULT_WATCHLIST_URL,
+    process.env.WATCHLIST_URL?.trim() ||
+      process.env.LETTERBOXD_WATCHLIST_URL?.trim() ||
+      DEFAULT_WATCHLIST_URL,
   );
   const eventTimezone = process.env.EVENT_TIMEZONE?.trim() || "Asia/Kolkata";
   const startHour = parseNumberEnv("EVENT_START_HOUR", 22, 0, 23);
