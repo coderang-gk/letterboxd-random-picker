@@ -59,8 +59,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun applySystemInsets() {
-        val initialTopPadding = binding.topAppBar.paddingTop
-        ViewCompat.setOnApplyWindowInsetsListener(binding.topAppBar) { view, insets ->
+        val initialTopPadding = binding.appBarContainer.paddingTop
+        ViewCompat.setOnApplyWindowInsetsListener(binding.appBarContainer) { view, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.statusBars())
             view.updatePadding(top = initialTopPadding + systemBars.top)
             insets

@@ -22,6 +22,14 @@
         <item name="shapeAppearanceLargeComponent">@style/ShapeAppearance.LetterboxdWallpaper.Large</item>
     </style>
 
+    <style name="TextAppearance.LetterboxdWallpaper.ToolbarTitle" parent="TextAppearance.Material3.TitleLarge">
+        <item name="android:fontFamily">@font/clarity_city_semibold</item>
+        <item name="fontFamily">@font/clarity_city_semibold</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:letterSpacing">0.01</item>
+    </style>
+
     <style name="ShapeAppearance.LetterboxdWallpaper.Small" parent="">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">18dp</item>

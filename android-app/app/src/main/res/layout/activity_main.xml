@@ -7,6 +7,7 @@
     android:orientation="vertical">
 
     <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/movie_topbar"
@@ -16,17 +17,17 @@
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/topAppBar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="56dp"
             android:background="@color/movie_topbar"
             android:elevation="0dp"
-            android:minHeight="56dp"
-            android:paddingStart="6dp"
-            android:paddingTop="2dp"
-            android:paddingEnd="6dp"
-            android:paddingBottom="2dp"
+            android:paddingStart="0dp"
+            android:paddingTop="0dp"
+            android:paddingEnd="0dp"
+            android:paddingBottom="0dp"
             app:title="@string/app_name"
+            app:titleCentered="true"
             app:titleTextColor="@color/movie_topbar_title"
-            app:titleTextAppearance="@style/TextAppearance.Material3.TitleLarge" />
+            app:titleTextAppearance="@style/TextAppearance.LetterboxdWallpaper.ToolbarTitle" />
     </com.google.android.material.appbar.AppBarLayout>
 
     <ScrollView
@@ -58,6 +59,7 @@
                     android:id="@+id/statusText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/clarity_city_medium"
                     android:padding="16dp"
                     android:text="@string/status_idle"
                     android:textAppearance="@style/TextAppearance.Material3.BodyLarge" />
@@ -157,7 +159,7 @@
                         android:layout_marginTop="14dp"
                         android:paddingStart="16dp"
                         android:paddingEnd="16dp"
-                        android:fontFamily="sans-serif-medium"
+                        android:fontFamily="@font/clarity_city_semibold"
                         android:textAppearance="@style/TextAppearance.Material3.HeadlineSmall"
                         android:textColor="@color/movie_text"
                         android:textStyle="bold" />
@@ -169,7 +171,7 @@
                         android:layout_marginTop="6dp"
                         android:paddingStart="16dp"
                         android:paddingEnd="16dp"
-                        android:fontFamily="sans-serif-medium"
+                        android:fontFamily="@font/clarity_city_medium"
                         android:textColor="@color/movie_muted"
                         android:textSize="14sp" />
 
@@ -180,7 +182,7 @@
                         android:layout_marginTop="14dp"
                         android:paddingStart="16dp"
                         android:paddingEnd="16dp"
-                        android:fontFamily="sans-serif"
+                        android:fontFamily="@font/clarity_city_regular"
                         android:lineSpacingExtra="4dp"
                         android:textColor="@color/movie_text"
                         android:textAppearance="@style/TextAppearance.Material3.BodyLarge" />
@@ -198,6 +200,7 @@
                             android:layout_width="0dp"
                             android:layout_height="50dp"
                             android:layout_weight="1"
+                            android:fontFamily="@font/clarity_city_medium"
                             android:maxLines="1"
                             android:text="@string/apply_wallpaper_short"
                             android:textColor="@color/movie_on_accent"
@@ -210,6 +213,7 @@
                             android:layout_height="50dp"
                             android:layout_marginStart="12dp"
                             android:layout_weight="1"
+                            android:fontFamily="@font/clarity_city_medium"
                             android:maxLines="1"
                             android:text="@string/open_stremio_short"
                             android:textColor="@color/movie_accent"
@@ -238,7 +242,7 @@
                         android:id="@+id/scheduleText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:fontFamily="sans-serif-medium"
+                        android:fontFamily="@font/clarity_city_medium"
                         android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
                         android:textColor="@color/movie_text"
                         android:textStyle="bold" />
@@ -248,6 +252,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
+                        android:fontFamily="@font/clarity_city_regular"
                         android:textColor="@color/movie_muted" />
 
                     <TextView
@@ -255,12 +260,14 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="14dp"
+                        android:fontFamily="@font/clarity_city_regular"
                         android:textColor="@color/movie_muted" />
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="18dp"
+                        android:fontFamily="@font/clarity_city_medium"
                         android:text="@string/links_heading"
                         android:textAppearance="@style/TextAppearance.Material3.TitleSmall"
                         android:textColor="@color/movie_text"
@@ -272,6 +279,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
                         android:autoLink="web"
+                        android:fontFamily="@font/clarity_city_regular"
                         android:textColor="@color/movie_muted" />
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
