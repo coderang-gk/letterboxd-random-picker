@@ -9,9 +9,35 @@ The default watchlist is:
 
 - `https://letterboxd.com/coderang/watchlist/`
 
-## Quick Start
+## Choose Your Setup
 
-If you want to use the full system yourself:
+This project supports two ways to use it:
+
+1. **Simple app + local calendar**
+   The GitHub Action picks the movie and publishes `latest-movie.json`. The Android app reads that feed, applies the wallpaper, and adds the event to the user's calendar directly on the phone.
+   Jump to [Simple Setup](#simple-setup).
+
+2. **Full automation with Google Calendar bot**
+   The GitHub Action picks the movie, publishes the feed, and also creates the Google Calendar event automatically using a service account.
+   Jump to [Full Automation Setup](#full-automation-setup).
+
+For most users, the simple setup is the better default.
+
+## Simple Setup
+
+1. Fork this repository.
+2. Enable GitHub Actions in the fork.
+3. Add the `LETTERBOXD_WATCHLIST_URL` repository variable.
+4. Add `TMDB_API_KEY` if you want proper TMDb poster art.
+5. Run the workflow once manually.
+6. Confirm that `public/latest-movie.json` was updated.
+7. Install the Android app from `android-app/`.
+8. Paste your published feed URL into the app.
+9. Use the app to apply wallpaper and add the movie to your calendar locally.
+
+## Full Automation Setup
+
+If you want the GitHub Action to create Google Calendar events automatically as well:
 
 1. Fork this repository.
 2. Set up a Google Cloud project, service account, and a Google Calendar the bot can edit.
@@ -64,7 +90,7 @@ Add this repository variable in GitHub:
 
 - `LETTERBOXD_WATCHLIST_URL`
 
-## End-to-End Setup
+## Detailed Setup
 
 ### 1. Fork and enable GitHub Actions
 
