@@ -28,137 +28,199 @@
             android:text="@string/status_idle"
             android:textAppearance="@style/TextAppearance.Material3.BodyLarge" />
 
-        <com.google.android.material.textfield.TextInputLayout
+        <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:hint="@string/feed_url_label"
-            app:boxBackgroundMode="filled">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/feedUrlInput"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textUri" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:orientation="horizontal">
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/saveFeedButton"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/save_feed" />
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/refreshButton"
-                style="@style/Widget.Material3.Button.OutlinedButton"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="12dp"
-                android:layout_weight="1"
-                android:text="@string/refresh_preview" />
-        </LinearLayout>
-
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="520dp"
-            android:layout_marginTop="20dp">
-
-            <ImageView
-                android:id="@+id/posterView"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:adjustViewBounds="true"
-                android:background="@color/movie_surface"
-                android:contentDescription="@string/poster_preview"
-                android:scaleType="centerCrop" />
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/poster_scrim" />
+            app:cardBackgroundColor="@color/movie_surface"
+            app:cardCornerRadius="24dp"
+            app:cardElevation="0dp"
+            app:strokeColor="@color/movie_card_stroke"
+            app:strokeWidth="1dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/feed_url_label"
+                    app:boxBackgroundMode="filled">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/feedUrlInput"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textUri" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/saveFeedButton"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/save_feed" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/refreshButton"
+                        style="@style/Widget.Material3.Button.OutlinedButton"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"
+                        android:layout_weight="1"
+                        android:text="@string/refresh_preview" />
+                </LinearLayout>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="0dp">
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="520dp">
+
+                    <ImageView
+                        android:id="@+id/posterView"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:adjustViewBounds="true"
+                        android:background="@color/movie_surface"
+                        android:contentDescription="@string/poster_preview"
+                        android:padding="16dp"
+                        android:scaleType="fitCenter" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/poster_scrim" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom"
+                        android:orientation="vertical"
+                        android:padding="18dp">
+
+                        <TextView
+                            android:id="@+id/titleText"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="@style/TextAppearance.Material3.HeadlineMedium"
+                            android:textColor="@android:color/white"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/metaOverlayText"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="6dp"
+                            android:textColor="@android:color/white"
+                            android:textSize="14sp" />
+                    </LinearLayout>
+                </FrameLayout>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:cardBackgroundColor="@color/movie_surface"
+            app:cardCornerRadius="24dp"
+            app:cardElevation="0dp"
+            app:strokeColor="@color/movie_card_stroke"
+            app:strokeWidth="1dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:padding="18dp">
 
                 <TextView
-                    android:id="@+id/titleText"
+                    android:id="@+id/scheduleText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textAppearance="@style/TextAppearance.Material3.HeadlineMedium"
-                    android:textColor="@android:color/white"
+                    android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/metaOverlayText"
+                    android:id="@+id/lastAppliedText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="6dp"
-                    android:textColor="@android:color/white"
-                    android:textSize="14sp" />
+                    android:layout_marginTop="10dp"
+                    android:textColor="@color/movie_muted" />
+
+                <TextView
+                    android:id="@+id/detailsText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="14dp" />
+
+                <TextView
+                    android:id="@+id/synopsisText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:lineSpacingExtra="4dp"
+                    android:textAppearance="@style/TextAppearance.Material3.BodyLarge" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="18dp"
+                    android:text="@string/links_heading"
+                    android:textAppearance="@style/TextAppearance.Material3.TitleSmall"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/linksText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:autoLink="web" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/applyWallpaperButton"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/apply_wallpaper" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/openStremioButton"
+                        style="@style/Widget.Material3.Button.OutlinedButton"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"
+                        android:layout_weight="1"
+                        android:text="@string/open_stremio" />
+                </LinearLayout>
             </LinearLayout>
-        </FrameLayout>
-
-        <TextView
-            android:id="@+id/scheduleText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/lastAppliedText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:textColor="@color/movie_muted" />
-
-        <TextView
-            android:id="@+id/detailsText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="14dp" />
-
-        <TextView
-            android:id="@+id/synopsisText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:lineSpacingExtra="4dp"
-            android:textAppearance="@style/TextAppearance.Material3.BodyLarge" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="18dp"
-            android:text="@string/links_heading"
-            android:textAppearance="@style/TextAppearance.Material3.TitleSmall"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/linksText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:autoLink="web" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/applyWallpaperButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:text="@string/apply_wallpaper" />
+        </com.google.android.material.card.MaterialCardView>
 
     </LinearLayout>
 

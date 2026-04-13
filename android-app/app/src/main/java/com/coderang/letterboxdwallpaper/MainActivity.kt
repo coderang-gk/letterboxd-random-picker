@@ -1,5 +1,8 @@
 package com.coderang.letterboxdwallpaper
 
+import android.content.ActivityNotFoundException
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -11,6 +14,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var repository: MovieRepository
     private lateinit var preferences: WallpaperPreferences
+    private var currentMoviePick: MoviePick? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,6 +47,9 @@ class MainActivity : AppCompatActivity() {
             WallpaperScheduler.triggerImmediate(this)
             toast("Wallpaper refresh queued.")
         }
+        binding.openStremioButton.setOnClickListener {
+            currentMoviePick?.let(::openInStremio) ?: toast("Load a movie first.")
+        }
 
         loadPreview()
         renderAppliedState()
@@ -57,6 +64,7 @@ class MainActivity : AppCompatActivity() {
             runCatching {
                 binding.statusText.text = getString(R.string.status_loading)
                 val moviePick = repository.fetchMoviePick(feedUrl)
+                currentMoviePick = moviePick
                 binding.titleText.text = moviePick.movie.displayName
                 binding.metaOverlayText.text = buildMetaLine(moviePick)
                 binding.scheduleText.text = getString(
@@ -104,6 +112,30 @@ class MainActivity : AppCompatActivity() {
 
     private fun toast(message: String) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+    }
+
+    private fun openInStremio(moviePick: MoviePick) {
+        val query = buildString {
+            append(moviePick.movie.title)
+            moviePick.movie.year?.let {
+                append(" ")
+                append(it)
+            }
+        }
+        val deepLink = Uri.parse("stremio:///search?search=${Uri.encode(query)}")
+        val fallback = Uri.parse("https://www.stremio.com/downloads")
+
+        runCatching {
+            startActivity(Intent(Intent.ACTION_VIEW, deepLink))
+        }.recoverCatching {
+            if (it is ActivityNotFoundException) {
+                startActivity(Intent(Intent.ACTION_VIEW, fallback))
+            } else {
+                throw it
+            }
+        }.onFailure {
+            toast("Unable to open Stremio right now.")
+        }
     }
 
     private fun buildMetaLine(moviePick: MoviePick): String {

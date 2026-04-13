@@ -5,4 +5,9 @@
     <color name="movie_text">#1E293B</color>
     <color name="movie_accent">#B45309</color>
     <color name="movie_muted">#6B7280</color>
+    <color name="movie_card_stroke">#E6D7B7</color>
+    <color name="wallpaper_backdrop">#121826</color>
+    <color name="launcher_background">#E9B44C</color>
+    <color name="launcher_tile">#182331</color>
+    <color name="launcher_detail">#FFF6E7</color>
 </resources>

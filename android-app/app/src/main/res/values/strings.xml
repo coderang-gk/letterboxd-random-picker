@@ -6,6 +6,7 @@
     <string name="save_feed">Save feed</string>
     <string name="refresh_preview">Refresh preview</string>
     <string name="apply_wallpaper">Apply lock screen wallpaper</string>
+    <string name="open_stremio">Open in Stremio</string>
     <string name="poster_preview">Movie poster preview</string>
     <string name="status_idle">Ready to load the latest weekly movie.</string>
     <string name="status_loading">Loading the latest weekly movie…</string>
