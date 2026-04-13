@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="movie_bg">#F3E9D2</color>
+    <color name="movie_surface">#FFF9F0</color>
+    <color name="movie_text">#1E293B</color>
+    <color name="movie_accent">#B45309</color>
+</resources>

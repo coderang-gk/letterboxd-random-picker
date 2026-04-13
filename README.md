@@ -1,6 +1,9 @@
 # Letterboxd Random Movie Calendar Action
 
-This repository contains a GitHub Action that scrapes a public Letterboxd watchlist, picks a random movie, and creates a Google Calendar event for it.
+This repository contains:
+
+- a GitHub Action that scrapes a public Letterboxd watchlist, picks a weekly movie, creates a Google Calendar event, and publishes a JSON feed for clients
+- a separate Android app in `android-app/` that reads the published weekly movie feed and updates the lock screen wallpaper
 
 The default watchlist is:
 
@@ -10,8 +13,9 @@ The default watchlist is:
 
 - Scrapes the Letterboxd watchlist HTML directly.
 - Follows paginated watchlist pages until no more movie cards are found.
-- Picks one random movie from the collected results.
+- Picks one deterministic weekly movie from the collected results based on the Sunday event date, so reruns do not reshuffle the week.
 - Creates a Google Calendar event for the selected movie.
+- Publishes the selected movie to `public/latest-movie.json` for other clients, including the Android wallpaper app.
 - Uses a stable event ID so rerunning the workflow does not create duplicates for the same movie on the same date.
 
 ## Workflow
@@ -26,6 +30,12 @@ It supports:
 - Manual runs with optional inputs for watchlist URL, event date, timezone, start time, duration, and dry-run mode.
 
 By default, the workflow creates a calendar event for `22:30` in `Asia/Kolkata` with a duration of `150` minutes.
+
+When the workflow runs with `dry_run = false`, it also updates:
+
+- `public/latest-movie.json`
+
+That file is intended to be consumed by the Android app and other lightweight clients.
 
 ## Required GitHub Secrets
 
@@ -58,7 +68,31 @@ Or run the script locally:
 DRY_RUN=true node scripts/random-letterboxd-calendar.mjs
 ```
 
+To verify the published JSON locally:
+
+```bash
+cat public/latest-movie.json
+```
+
+## Android App
+
+The Android app lives in:
+
+- `android-app/`
+
+It:
+
+- fetches the published movie JSON from the repo
+- previews the latest weekly movie
+- applies the poster as the lock screen wallpaper
+- uses `WorkManager` to check daily for a new weekly movie ID and only updates when the published movie changes
+
+See:
+
+- `android-app/README.md`
+
 ## Notes
 
 - The scraper relies on Letterboxd watchlist poster cards exposing `data-item-name` and `data-target-link` in the page HTML.
+- The film synopsis/poster enrichment comes from public metadata on each Letterboxd film page.
 - The script uses only built-in Node.js modules, so there are no npm dependencies to install.

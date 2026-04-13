@@ -1,0 +1,29 @@
+{
+  "id": "lbe63d5849b47f8cec5d4590ea840998",
+  "generatedAt": "2026-04-13T08:46:03.358Z",
+  "watchlistUrl": "https://letterboxd.com/coderang/watchlist/",
+  "scrapedMovieCount": 9,
+  "movie": {
+    "title": "Yi Yi",
+    "year": "2000",
+    "displayName": "Yi Yi (2000)",
+    "link": "https://letterboxd.com/film/yi-yi/",
+    "synopsis": "A Taipei family faces personal and moral uncertainty as everyday events test their relationships and sense of purpose.",
+    "posterUrl": "https://a.ltrbxd.com/resized/sm/upload/yc/mc/ep/c9/yi-yi-1200-1200-675-675-crop-000000.jpg?v=b55a45939d",
+    "genres": [],
+    "directors": []
+  },
+  "event": {
+    "summary": "Watch: Yi Yi (2000)",
+    "description": "Random movie picked from a Letterboxd watchlist.\nMovie: Yi Yi (2000)\nSynopsis: A Taipei family faces personal and moral uncertainty as everyday events test their relationships and sense of purpose.\nPoster: https://a.ltrbxd.com/resized/sm/upload/yc/mc/ep/c9/yi-yi-1200-1200-675-675-crop-000000.jpg?v=b55a45939d\nLetterboxd: https://letterboxd.com/film/yi-yi/\nWatchlist: https://letterboxd.com/coderang/watchlist/",
+    "date": "2026-04-19",
+    "start": {
+      "dateTime": "2026-04-19T22:30:00",
+      "timeZone": "Asia/Kolkata"
+    },
+    "end": {
+      "dateTime": "2026-04-20T01:00:00",
+      "timeZone": "Asia/Kolkata"
+    }
+  }
+}

@@ -43,7 +43,7 @@ on:
       timezone: "Asia/Kolkata"
 
 permissions:
-  contents: read
+  contents: write
 
 concurrency:
   group: letterboxd-random-movie-calendar
@@ -61,6 +61,7 @@ jobs:
       EVENT_START_MINUTE: ${{ github.event.inputs.event_start_minute }}
       EVENT_DURATION_MINUTES: ${{ github.event.inputs.event_duration_minutes }}
       DRY_RUN: ${{ github.event.inputs.dry_run }}
+      OUTPUT_JSON_PATH: public/latest-movie.json
       GOOGLE_CALENDAR_ID: ${{ secrets.GOOGLE_CALENDAR_ID }}
       GOOGLE_SERVICE_ACCOUNT_EMAIL: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_EMAIL }}
       GOOGLE_PRIVATE_KEY: ${{ secrets.GOOGLE_PRIVATE_KEY }}
@@ -75,3 +76,13 @@ jobs:
 
       - name: Pick a random movie and create calendar event
         run: node scripts/random-letterboxd-calendar.mjs
+
+      - name: Commit published movie feed
+        if: ${{ github.event.inputs.dry_run != 'true' }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add public/latest-movie.json
+          git diff --cached --quiet && exit 0
+          git commit -m "Update weekly movie feed"
+          git push

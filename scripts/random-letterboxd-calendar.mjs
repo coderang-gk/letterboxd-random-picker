@@ -1,4 +1,6 @@
-import { createHash, createSign, randomInt } from "node:crypto";
+import { mkdir, writeFile } from "node:fs/promises";
+import { dirname } from "node:path";
+import { createHash, createSign } from "node:crypto";
 
 const DEFAULT_WATCHLIST_URL = "https://letterboxd.com/coderang/watchlist/";
 const GOOGLE_TOKEN_URL = "https://oauth2.googleapis.com/token";
@@ -14,23 +16,34 @@ async function main() {
     throw new Error(`No movies found at ${config.watchlistUrl}`);
   }
 
-  const pickedMovie = movies[randomInt(movies.length)];
-  const movieDetails = await fetchMovieDetails(pickedMovie.link);
   const eventWindow = buildEventWindow(config);
+  const pickedMovie = pickMovieForDate(
+    movies,
+    eventWindow.targetDate,
+    config.watchlistUrl,
+  );
+  const movieDetails = await fetchMovieDetails(pickedMovie.link);
   const event = buildCalendarEvent(
     pickedMovie,
     movieDetails,
     config,
     eventWindow,
   );
+  const publishedMovie = buildPublishedMovie(
+    movies.length,
+    pickedMovie,
+    movieDetails,
+    config,
+    eventWindow,
+    event,
+  );
+
+  await writePublishedMovie(config.outputJsonPath, publishedMovie);
 
   console.log(
     JSON.stringify(
       {
-        scrapedMovieCount: movies.length,
-        pickedMovie,
-        movieDetails,
-        event,
+        publishedMovie,
         dryRun: config.dryRun,
       },
       null,
@@ -68,8 +81,8 @@ function readConfig() {
     process.env.WATCHLIST_URL?.trim() || DEFAULT_WATCHLIST_URL,
   );
   const eventTimezone = process.env.EVENT_TIMEZONE?.trim() || "Asia/Kolkata";
-  const startHour = parseNumberEnv("EVENT_START_HOUR", 20, 0, 23);
-  const startMinute = parseNumberEnv("EVENT_START_MINUTE", 0, 0, 59);
+  const startHour = parseNumberEnv("EVENT_START_HOUR", 22, 0, 23);
+  const startMinute = parseNumberEnv("EVENT_START_MINUTE", 30, 0, 59);
   const durationMinutes = parseNumberEnv("EVENT_DURATION_MINUTES", 150, 1, 1440);
   const pageLimit = Number.isFinite(PAGE_LIMIT) && PAGE_LIMIT > 0 ? PAGE_LIMIT : 25;
   const dryRun = parseBoolean(process.env.DRY_RUN);
@@ -83,6 +96,7 @@ function readConfig() {
     eventDate: normalizeEventDate(process.env.EVENT_DATE?.trim() || ""),
     pageLimit,
     dryRun,
+    outputJsonPath: process.env.OUTPUT_JSON_PATH?.trim() || "public/latest-movie.json",
     calendarId: process.env.GOOGLE_CALENDAR_ID?.trim() || "",
     serviceAccountEmail:
       process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL?.trim() || "",
@@ -102,6 +116,16 @@ function readConfig() {
   }
 
   return config;
+}
+
+function pickMovieForDate(movies, targetDate, watchlistUrl) {
+  const digest = createHash("sha256")
+    .update(`${targetDate}:${watchlistUrl}`)
+    .digest("hex");
+  const numericSeed = Number.parseInt(digest.slice(0, 12), 16);
+  const index = numericSeed % movies.length;
+
+  return movies[index];
 }
 
 function normalizePrivateKey(value) {
@@ -283,6 +307,46 @@ function buildEventWindow(config) {
     startDateTime: `${targetDate}T${pad(config.startHour)}:${pad(config.startMinute)}:00`,
     endDateTime: `${endDate}T${pad(endHour)}:${pad(endMinute)}:00`,
   };
+}
+
+function buildPublishedMovie(
+  scrapedMovieCount,
+  pickedMovie,
+  movieDetails,
+  config,
+  eventWindow,
+  event,
+) {
+  return {
+    id: event.id,
+    generatedAt: new Date().toISOString(),
+    watchlistUrl: config.watchlistUrl,
+    scrapedMovieCount,
+    movie: {
+      ...pickedMovie,
+      synopsis: movieDetails.synopsis,
+      posterUrl: movieDetails.posterUrl,
+      genres: movieDetails.genres,
+      directors: movieDetails.directors,
+    },
+    event: {
+      summary: event.summary,
+      description: event.description,
+      date: eventWindow.targetDate,
+      start: event.start,
+      end: event.end,
+    },
+  };
+}
+
+async function writePublishedMovie(outputJsonPath, publishedMovie) {
+  const directory = dirname(outputJsonPath);
+  await mkdir(directory, { recursive: true });
+  await writeFile(
+    outputJsonPath,
+    `${JSON.stringify(publishedMovie, null, 2)}\n`,
+    "utf8",
+  );
 }
 
 async function fetchMovieDetails(movieUrl) {
