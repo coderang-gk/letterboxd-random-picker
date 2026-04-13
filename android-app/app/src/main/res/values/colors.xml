@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="movie_bg">#F5F0E6</color>
-    <color name="movie_surface">#FFF9F2</color>
-    <color name="movie_text">#171B22</color>
-    <color name="movie_accent">#FF8000</color>
-    <color name="movie_muted">#667085</color>
-    <color name="movie_card_stroke">#E6DACC</color>
-    <color name="wallpaper_backdrop">#121826</color>
-    <color name="movie_status_surface">#F2E8DA</color>
-    <color name="movie_status_stroke">#D7C5AE</color>
-    <color name="movie_poster_stage">#E8DCCA</color>
-    <color name="movie_topbar">#14181C</color>
-    <color name="movie_topbar_title">#FFF6E8</color>
-    <color name="movie_topbar_subtitle">#C9D2DD</color>
+    <color name="movie_bg">#14181C</color>
+    <color name="movie_surface">#1F252D</color>
+    <color name="movie_text">#F5F7FA</color>
+    <color name="movie_accent">#00E054</color>
+    <color name="movie_on_accent">#08110C</color>
+    <color name="movie_muted">#98A6B5</color>
+    <color name="movie_card_stroke">#2A313A</color>
+    <color name="wallpaper_backdrop">#0B0F13</color>
+    <color name="movie_status_surface">#192028</color>
+    <color name="movie_status_stroke">#26303A</color>
+    <color name="movie_poster_stage">#11161B</color>
+    <color name="movie_topbar">#0F1317</color>
+    <color name="movie_topbar_title">#F7FAFC</color>
+    <color name="movie_topbar_subtitle">#9AB0C3</color>
     <color name="launcher_background">#E9B44C</color>
     <color name="launcher_tile">#182331</color>
     <color name="launcher_detail">#FFF6E7</color>

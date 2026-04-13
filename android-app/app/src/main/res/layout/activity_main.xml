@@ -19,15 +19,14 @@
             android:layout_height="wrap_content"
             android:background="@color/movie_topbar"
             android:elevation="0dp"
-            android:minHeight="72dp"
-            android:paddingStart="12dp"
-            android:paddingTop="8dp"
-            android:paddingEnd="12dp"
-            android:paddingBottom="12dp"
-            app:subtitle="@string/topbar_subtitle"
-            app:subtitleTextColor="@color/movie_topbar_subtitle"
+            android:minHeight="56dp"
+            android:paddingStart="6dp"
+            android:paddingTop="2dp"
+            android:paddingEnd="6dp"
+            android:paddingBottom="2dp"
             app:title="@string/app_name"
-            app:titleTextColor="@color/movie_topbar_title" />
+            app:titleTextColor="@color/movie_topbar_title"
+            app:titleTextAppearance="@style/TextAppearance.Material3.TitleLarge" />
     </com.google.android.material.appbar.AppBarLayout>
 
     <ScrollView
@@ -124,7 +123,7 @@
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="18dp"
                 app:cardBackgroundColor="@color/movie_surface"
                 app:cardCornerRadius="28dp"
                 app:cardElevation="0dp"
@@ -135,14 +134,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:paddingStart="16dp"
-                    android:paddingTop="16dp"
-                    android:paddingEnd="16dp"
                     android:paddingBottom="18dp">
 
                     <FrameLayout
                         android:layout_width="match_parent"
-                        android:layout_height="360dp"
+                        android:layout_height="520dp"
                         android:background="@color/movie_poster_stage">
 
                         <ImageView
@@ -150,11 +146,8 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_gravity="center"
-                            android:adjustViewBounds="true"
                             android:contentDescription="@string/poster_preview"
-                            android:paddingHorizontal="4dp"
-                            android:paddingVertical="6dp"
-                            android:scaleType="fitCenter" />
+                            android:scaleType="centerCrop" />
                     </FrameLayout>
 
                     <TextView
@@ -162,7 +155,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="14dp"
-                        android:fontFamily="serif"
+                        android:paddingStart="16dp"
+                        android:paddingEnd="16dp"
+                        android:fontFamily="sans-serif-medium"
                         android:textAppearance="@style/TextAppearance.Material3.HeadlineSmall"
                         android:textColor="@color/movie_text"
                         android:textStyle="bold" />
@@ -172,9 +167,54 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="6dp"
+                        android:paddingStart="16dp"
+                        android:paddingEnd="16dp"
                         android:fontFamily="sans-serif-medium"
                         android:textColor="@color/movie_muted"
                         android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/synopsisText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="14dp"
+                        android:paddingStart="16dp"
+                        android:paddingEnd="16dp"
+                        android:fontFamily="sans-serif"
+                        android:lineSpacingExtra="4dp"
+                        android:textColor="@color/movie_text"
+                        android:textAppearance="@style/TextAppearance.Material3.BodyLarge" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="18dp"
+                        android:orientation="horizontal"
+                        android:paddingStart="16dp"
+                        android:paddingEnd="16dp">
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/applyWallpaperButton"
+                            android:layout_width="0dp"
+                            android:layout_height="50dp"
+                            android:layout_weight="1"
+                            android:maxLines="1"
+                            android:text="@string/apply_wallpaper_short"
+                            android:textColor="@color/movie_on_accent"
+                            app:backgroundTint="@color/movie_accent" />
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/openStremioButton"
+                            style="@style/Widget.Material3.Button.OutlinedButton"
+                            android:layout_width="0dp"
+                            android:layout_height="50dp"
+                            android:layout_marginStart="12dp"
+                            android:layout_weight="1"
+                            android:maxLines="1"
+                            android:text="@string/open_stremio_short"
+                            android:textColor="@color/movie_accent"
+                            app:strokeColor="@color/movie_accent" />
+                    </LinearLayout>
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
@@ -200,6 +240,7 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="sans-serif-medium"
                         android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
+                        android:textColor="@color/movie_text"
                         android:textStyle="bold" />
 
                     <TextView
@@ -213,16 +254,8 @@
                         android:id="@+id/detailsText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="14dp" />
-
-                    <TextView
-                        android:id="@+id/synopsisText"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        android:fontFamily="serif"
-                        android:lineSpacingExtra="4dp"
-                        android:textAppearance="@style/TextAppearance.Material3.BodyLarge" />
+                        android:layout_marginTop="14dp"
+                        android:textColor="@color/movie_muted" />
 
                     <TextView
                         android:layout_width="match_parent"
@@ -230,6 +263,7 @@
                         android:layout_marginTop="18dp"
                         android:text="@string/links_heading"
                         android:textAppearance="@style/TextAppearance.Material3.TitleSmall"
+                        android:textColor="@color/movie_text"
                         android:textStyle="bold" />
 
                     <TextView
@@ -237,32 +271,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:autoLink="web" />
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="24dp"
-                        android:orientation="horizontal">
-
-                        <com.google.android.material.button.MaterialButton
-                            android:id="@+id/applyWallpaperButton"
-                            android:layout_width="0dp"
-                            android:layout_height="48dp"
-                            android:layout_weight="1"
-                            android:maxLines="1"
-                            android:text="@string/apply_wallpaper_short" />
-
-                        <com.google.android.material.button.MaterialButton
-                            android:id="@+id/openStremioButton"
-                            style="@style/Widget.Material3.Button.TonalButton"
-                            android:layout_width="0dp"
-                            android:layout_height="48dp"
-                            android:layout_marginStart="12dp"
-                            android:layout_weight="1"
-                            android:maxLines="1"
-                            android:text="@string/open_stremio_short" />
-                    </LinearLayout>
+                        android:autoLink="web"
+                        android:textColor="@color/movie_muted" />
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
