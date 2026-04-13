@@ -31,7 +31,7 @@ For most users, the simple setup is the better default.
 4. Add `TMDB_API_KEY` if you want proper TMDb poster art.
 5. Run the workflow once manually.
 6. Confirm that `public/latest-movie.json` was updated.
-7. Install the Android app from `android-app/`.
+7. Download and install the latest Android app release from the repository's Releases page.
 8. Paste your published feed URL into the app.
 9. Use the app to apply wallpaper and add the movie to your calendar locally.
 
