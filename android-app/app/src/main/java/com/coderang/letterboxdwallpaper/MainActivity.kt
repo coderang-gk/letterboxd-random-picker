@@ -6,6 +6,9 @@ import android.net.Uri
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.updatePadding
 import androidx.lifecycle.lifecycleScope
 import com.coderang.letterboxdwallpaper.databinding.ActivityMainBinding
 import kotlinx.coroutines.launch
@@ -20,6 +23,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        applySystemInsets()
 
         repository = MovieRepository(this)
         preferences = repository.getPreferences()
@@ -44,8 +48,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.applyWallpaperButton.setOnClickListener {
-            WallpaperScheduler.triggerImmediate(this)
-            toast("Wallpaper refresh queued.")
+            applyWallpaperNow()
         }
         binding.openStremioButton.setOnClickListener {
             currentMoviePick?.let(::openInStremio) ?: toast("Load a movie first.")
@@ -53,6 +56,15 @@ class MainActivity : AppCompatActivity() {
 
         loadPreview()
         renderAppliedState()
+    }
+
+    private fun applySystemInsets() {
+        val initialTopPadding = binding.topAppBar.paddingTop
+        ViewCompat.setOnApplyWindowInsetsListener(binding.topAppBar) { view, insets ->
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.statusBars())
+            view.updatePadding(top = initialTopPadding + systemBars.top)
+            insets
+        }
     }
 
     private fun loadPreview() {
@@ -108,6 +120,37 @@ class MainActivity : AppCompatActivity() {
             lastAppliedId,
             lastAppliedAt,
         )
+    }
+
+    private fun applyWallpaperNow() {
+        val moviePick = currentMoviePick
+        if (moviePick == null) {
+            toast("Load a movie first.")
+            return
+        }
+
+        lifecycleScope.launch {
+            runCatching {
+                binding.statusText.text = getString(R.string.status_applying)
+                WallpaperApplier(this@MainActivity).applyMoviePoster(
+                    moviePick,
+                    repository,
+                    preferences,
+                )
+                renderAppliedState()
+                binding.statusText.text = getString(
+                    R.string.status_applied,
+                    moviePick.movie.displayName,
+                )
+                toast("Wallpaper applied.")
+            }.onFailure {
+                binding.statusText.text = getString(
+                    R.string.status_failed,
+                    it.message ?: "Unknown error",
+                )
+                toast("Failed to apply wallpaper.")
+            }
+        }
     }
 
     private fun toast(message: String) {

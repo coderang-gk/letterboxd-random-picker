@@ -4,20 +4,31 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/movie_bg"
-    android:fitsSystemWindows="true"
     android:orientation="vertical">
 
-    <com.google.android.material.appbar.MaterialToolbar
-        android:id="@+id/topAppBar"
+    <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/movie_bg"
+        android:background="@color/movie_topbar"
         android:elevation="0dp"
-        android:paddingStart="8dp"
-        android:paddingEnd="8dp"
-        app:subtitle="@string/topbar_subtitle"
-        app:title="@string/app_name"
-        app:titleTextAppearance="@style/TextAppearance.Material3.TitleLarge" />
+        android:fitsSystemWindows="true">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/topAppBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/movie_topbar"
+            android:elevation="0dp"
+            android:minHeight="72dp"
+            android:paddingStart="12dp"
+            android:paddingTop="8dp"
+            android:paddingEnd="12dp"
+            android:paddingBottom="12dp"
+            app:subtitle="@string/topbar_subtitle"
+            app:subtitleTextColor="@color/movie_topbar_subtitle"
+            app:title="@string/app_name"
+            app:titleTextColor="@color/movie_topbar_title" />
+    </com.google.android.material.appbar.AppBarLayout>
 
     <ScrollView
         android:layout_width="match_parent"
@@ -124,11 +135,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:padding="18dp">
+                    android:paddingStart="16dp"
+                    android:paddingTop="16dp"
+                    android:paddingEnd="16dp"
+                    android:paddingBottom="18dp">
 
                     <FrameLayout
                         android:layout_width="match_parent"
-                        android:layout_height="400dp"
+                        android:layout_height="360dp"
                         android:background="@color/movie_poster_stage">
 
                         <ImageView
@@ -138,8 +152,8 @@
                             android:layout_gravity="center"
                             android:adjustViewBounds="true"
                             android:contentDescription="@string/poster_preview"
-                            android:paddingHorizontal="8dp"
-                            android:paddingVertical="12dp"
+                            android:paddingHorizontal="4dp"
+                            android:paddingVertical="6dp"
                             android:scaleType="fitCenter" />
                     </FrameLayout>
 
@@ -147,8 +161,10 @@
                         android:id="@+id/titleText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
+                        android:layout_marginTop="14dp"
+                        android:fontFamily="serif"
                         android:textAppearance="@style/TextAppearance.Material3.HeadlineSmall"
+                        android:textColor="@color/movie_text"
                         android:textStyle="bold" />
 
                     <TextView
@@ -156,6 +172,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="6dp"
+                        android:fontFamily="sans-serif-medium"
                         android:textColor="@color/movie_muted"
                         android:textSize="14sp" />
                 </LinearLayout>
@@ -181,6 +198,7 @@
                         android:id="@+id/scheduleText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-medium"
                         android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
                         android:textStyle="bold" />
 
@@ -202,6 +220,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
+                        android:fontFamily="serif"
                         android:lineSpacingExtra="4dp"
                         android:textAppearance="@style/TextAppearance.Material3.BodyLarge" />
 

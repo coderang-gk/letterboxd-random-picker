@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="movie_bg">#F3E9D2</color>
-    <color name="movie_surface">#FFF9F0</color>
-    <color name="movie_text">#1E293B</color>
-    <color name="movie_accent">#B45309</color>
-    <color name="movie_muted">#6B7280</color>
-    <color name="movie_card_stroke">#E6D7B7</color>
+    <color name="movie_bg">#F5F0E6</color>
+    <color name="movie_surface">#FFF9F2</color>
+    <color name="movie_text">#171B22</color>
+    <color name="movie_accent">#FF8000</color>
+    <color name="movie_muted">#667085</color>
+    <color name="movie_card_stroke">#E6DACC</color>
     <color name="wallpaper_backdrop">#121826</color>
-    <color name="movie_status_surface">#F0DFC1</color>
-    <color name="movie_status_stroke">#D8C19A</color>
-    <color name="movie_poster_stage">#EADBC0</color>
+    <color name="movie_status_surface">#F2E8DA</color>
+    <color name="movie_status_stroke">#D7C5AE</color>
+    <color name="movie_poster_stage">#E8DCCA</color>
+    <color name="movie_topbar">#14181C</color>
+    <color name="movie_topbar_title">#FFF6E8</color>
+    <color name="movie_topbar_subtitle">#C9D2DD</color>
     <color name="launcher_background">#E9B44C</color>
     <color name="launcher_tile">#182331</color>
     <color name="launcher_detail">#FFF6E7</color>

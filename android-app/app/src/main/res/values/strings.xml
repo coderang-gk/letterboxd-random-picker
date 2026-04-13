@@ -13,6 +13,8 @@
     <string name="poster_preview">Movie poster preview</string>
     <string name="status_idle">Ready to load the latest weekly movie.</string>
     <string name="status_loading">Loading the latest weekly movie…</string>
+    <string name="status_applying">Applying wallpaper…</string>
+    <string name="status_applied">Wallpaper applied for %1$s</string>
     <string name="status_loaded">Loaded movie feed: %1$s</string>
     <string name="status_failed">Failed to load movie feed: %1$s</string>
     <string name="schedule_value">Next movie night: %1$s at %2$s (%3$s)</string>

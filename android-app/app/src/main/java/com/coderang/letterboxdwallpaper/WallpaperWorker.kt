@@ -24,29 +24,11 @@ class WallpaperWorker(
                 return Result.success()
             }
 
-            val poster = repository.fetchPosterBitmap(moviePick.movie.posterUrl)
-            val wallpaperBitmap =
-                WallpaperBitmapFormatter(applicationContext).fitPosterToScreen(poster)
-            val wallpaperManager = WallpaperManager.getInstance(applicationContext)
-            val metrics = applicationContext.resources.displayMetrics
-            wallpaperManager.suggestDesiredDimensions(
-                metrics.widthPixels,
-                metrics.heightPixels,
+            WallpaperApplier(applicationContext).applyMoviePoster(
+                moviePick,
+                repository,
+                preferences,
             )
-
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                wallpaperManager.setBitmap(
-                    wallpaperBitmap,
-                    null,
-                    true,
-                    WallpaperManager.FLAG_LOCK,
-                )
-            } else {
-                wallpaperManager.setBitmap(wallpaperBitmap)
-            }
-
-            preferences.setLastAppliedMovieId(moviePick.id)
-            preferences.setLastAppliedAt(moviePick.generatedAt)
             Result.success()
         }.getOrElse {
             Result.retry()
