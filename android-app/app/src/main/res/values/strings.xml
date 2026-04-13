@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Weekly Movie Wallpaper</string>
+    <string name="eyebrow">Weekly Lock Screen Movie</string>
     <string name="feed_url_label">Published movie feed URL</string>
     <string name="save_feed">Save feed</string>
     <string name="refresh_preview">Refresh preview</string>
@@ -10,8 +11,9 @@
     <string name="status_loading">Loading the latest weekly movie…</string>
     <string name="status_loaded">Loaded movie feed: %1$s</string>
     <string name="status_failed">Failed to load movie feed: %1$s</string>
-    <string name="schedule_value">Event date: %1$s (%2$s)</string>
+    <string name="schedule_value">Next movie night: %1$s at %2$s (%3$s)</string>
     <string name="last_applied_value">Last applied movie ID: %1$s\nLast applied at: %2$s</string>
     <string name="links_value">Letterboxd: %1$s\nPoster: %2$s</string>
     <string name="no_synopsis">No synopsis available for this pick yet.</string>
+    <string name="links_heading">Source Links</string>
 </resources>

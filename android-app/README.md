@@ -15,11 +15,41 @@ This app reads the weekly movie feed published by the GitHub Action and applies 
 
 ## Building
 
-This folder is a standalone Android Studio project.
+This folder is a standalone Android project and can be built from the command line.
 
-1. Open `android-app/` in Android Studio.
-2. Let Android Studio download the Gradle wrapper and SDK components it needs.
-3. Run the app on a device with Android 7.0 or newer for lock-screen-only wallpaper support.
+### Command line build
+
+The project now includes a Gradle wrapper, so Android Studio is optional.
+
+1. Ensure these are installed:
+   - JDK 17
+   - Android command-line tools
+   - Android SDK platform packages for API 35
+2. Export:
+
+```bash
+export JAVA_HOME=/opt/homebrew/opt/openjdk@17/libexec/openjdk.jdk/Contents/Home
+export PATH=/opt/homebrew/opt/openjdk@17/bin:$PATH
+export ANDROID_SDK_ROOT=/opt/homebrew/share/android-commandlinetools
+export GRADLE_USER_HOME="$PWD/.gradle-user-home"
+export GRADLE_OPTS='-Dorg.gradle.native=false -Dorg.gradle.console=plain'
+```
+
+3. Build:
+
+```bash
+./gradlew assembleDebug
+```
+
+4. The generated APK will be at:
+
+```bash
+app/build/outputs/apk/debug/app-debug.apk
+```
+
+### Running
+
+Run the app on a device with Android 7.0 or newer for lock-screen-only wallpaper support.
 
 ## Notes
 

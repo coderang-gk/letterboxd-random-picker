@@ -58,13 +58,16 @@ class MainActivity : AppCompatActivity() {
                 binding.statusText.text = getString(R.string.status_loading)
                 val moviePick = repository.fetchMoviePick(feedUrl)
                 binding.titleText.text = moviePick.movie.displayName
+                binding.metaOverlayText.text = buildMetaLine(moviePick)
                 binding.scheduleText.text = getString(
                     R.string.schedule_value,
                     moviePick.event.date,
+                    moviePick.event.start.dateTime,
                     moviePick.event.start.timeZone,
                 )
                 binding.synopsisText.text =
                     moviePick.movie.synopsis.ifBlank { getString(R.string.no_synopsis) }
+                binding.detailsText.text = buildDetails(moviePick)
                 binding.linksText.text = getString(
                     R.string.links_value,
                     moviePick.movie.link,
@@ -101,5 +104,31 @@ class MainActivity : AppCompatActivity() {
 
     private fun toast(message: String) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+    }
+
+    private fun buildMetaLine(moviePick: MoviePick): String {
+        val parts = buildList {
+            moviePick.movie.year?.let { add(it) }
+            if (moviePick.movie.directors.isNotEmpty()) {
+                add(moviePick.movie.directors.joinToString())
+            }
+            if (moviePick.movie.genres.isNotEmpty()) {
+                add(moviePick.movie.genres.take(3).joinToString(" • "))
+            }
+        }
+
+        return parts.joinToString("  |  ")
+    }
+
+    private fun buildDetails(moviePick: MoviePick): String {
+        return buildList {
+            if (moviePick.movie.directors.isNotEmpty()) {
+                add("Director: ${moviePick.movie.directors.joinToString()}")
+            }
+            if (moviePick.movie.genres.isNotEmpty()) {
+                add("Genres: ${moviePick.movie.genres.joinToString()}")
+            }
+            add("Watchlist size: ${moviePick.scrapedMovieCount}")
+        }.joinToString("\n")
     }
 }
