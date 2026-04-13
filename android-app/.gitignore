@@ -2,3 +2,6 @@
 .gradle-user-home/
 build/
 local.properties
+.DS_Store
+*.jks
+*.keystore
