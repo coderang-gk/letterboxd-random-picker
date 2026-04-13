@@ -44,6 +44,7 @@ Add these repository secrets in GitHub:
 - `GOOGLE_CALENDAR_ID`
 - `GOOGLE_SERVICE_ACCOUNT_EMAIL`
 - `GOOGLE_PRIVATE_KEY`
+- `TMDB_API_KEY`
 
 ## Google Calendar Setup
 
@@ -95,4 +96,5 @@ See:
 
 - The scraper relies on Letterboxd watchlist poster cards exposing `data-item-name` and `data-target-link` in the page HTML.
 - The film synopsis/poster enrichment comes from public metadata on each Letterboxd film page.
+- If `TMDB_API_KEY` is configured, the workflow prefers TMDb poster art so the Android wallpaper app gets a true movie poster instead of a share-style image.
 - The script uses only built-in Node.js modules, so there are no npm dependencies to install.

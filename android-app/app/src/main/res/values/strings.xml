@@ -2,11 +2,14 @@
 <resources>
     <string name="app_name">Weekly Movie Wallpaper</string>
     <string name="eyebrow">Weekly Lock Screen Movie</string>
+    <string name="topbar_subtitle">Poster pick for your Sunday movie night</string>
     <string name="feed_url_label">Published movie feed URL</string>
     <string name="save_feed">Save feed</string>
     <string name="refresh_preview">Refresh preview</string>
     <string name="apply_wallpaper">Apply lock screen wallpaper</string>
+    <string name="apply_wallpaper_short">Apply Wallpaper</string>
     <string name="open_stremio">Open in Stremio</string>
+    <string name="open_stremio_short">Open Stremio</string>
     <string name="poster_preview">Movie poster preview</string>
     <string name="status_idle">Ready to load the latest weekly movie.</string>
     <string name="status_loading">Loading the latest weekly movie…</string>

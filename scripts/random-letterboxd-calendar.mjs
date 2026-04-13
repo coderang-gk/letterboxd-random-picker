@@ -6,6 +6,8 @@ const DEFAULT_WATCHLIST_URL = "https://letterboxd.com/coderang/watchlist/";
 const GOOGLE_TOKEN_URL = "https://oauth2.googleapis.com/token";
 const GOOGLE_CALENDAR_API_BASE = "https://www.googleapis.com/calendar/v3";
 const GOOGLE_CALENDAR_SCOPE = "https://www.googleapis.com/auth/calendar";
+const TMDB_API_BASE = "https://api.themoviedb.org/3";
+const TMDB_IMAGE_BASE = "https://image.tmdb.org/t/p/original";
 const PAGE_LIMIT = Number.parseInt(process.env.PAGE_LIMIT ?? "25", 10);
 
 async function main() {
@@ -22,7 +24,7 @@ async function main() {
     eventWindow.targetDate,
     config.watchlistUrl,
   );
-  const movieDetails = await fetchMovieDetails(pickedMovie.link);
+  const movieDetails = await fetchMovieDetails(pickedMovie, config);
   const event = buildCalendarEvent(
     pickedMovie,
     movieDetails,
@@ -97,6 +99,7 @@ function readConfig() {
     pageLimit,
     dryRun,
     outputJsonPath: process.env.OUTPUT_JSON_PATH?.trim() || "public/latest-movie.json",
+    tmdbApiKey: process.env.TMDB_API_KEY?.trim() || "",
     calendarId: process.env.GOOGLE_CALENDAR_ID?.trim() || "",
     serviceAccountEmail:
       process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL?.trim() || "",
@@ -326,6 +329,7 @@ function buildPublishedMovie(
       ...pickedMovie,
       synopsis: movieDetails.synopsis,
       posterUrl: movieDetails.posterUrl,
+      posterSource: movieDetails.posterSource,
       genres: movieDetails.genres,
       directors: movieDetails.directors,
     },
@@ -349,22 +353,103 @@ async function writePublishedMovie(outputJsonPath, publishedMovie) {
   );
 }
 
-async function fetchMovieDetails(movieUrl) {
-  const html = await fetchText(movieUrl);
+async function fetchMovieDetails(movie, config) {
+  const html = await fetchText(movie.link);
   const synopsis =
     decodeHtmlEntities(extractMetaContent(html, "property", "og:description")) ||
     decodeHtmlEntities(extractMetaContent(html, "name", "description"));
-  const posterUrl = decodeHtmlEntities(
+  const fallbackPosterUrl = decodeHtmlEntities(
     extractMetaContent(html, "property", "og:image"),
   );
   const jsonLd = extractMovieJsonLd(html);
+  const tmdbDetails = config.tmdbApiKey
+    ? await fetchTmdbMovieDetails(movie, config.tmdbApiKey)
+    : null;
 
   return {
     synopsis: synopsis || "",
-    posterUrl: posterUrl || "",
+    posterUrl: tmdbDetails?.posterUrl || fallbackPosterUrl || "",
+    posterSource: tmdbDetails ? "tmdb" : "letterboxd",
     genres: normalizeStringList(jsonLd?.genre),
     directors: normalizePeopleList(jsonLd?.director),
   };
+}
+
+async function fetchTmdbMovieDetails(movie, tmdbApiKey) {
+  const primaryResult = await searchTmdbMovie(movie, tmdbApiKey, true);
+  const fallbackResult =
+    primaryResult === null
+      ? await searchTmdbMovie(movie, tmdbApiKey, false)
+      : null;
+  const result = primaryResult || fallbackResult;
+
+  if (!result?.poster_path) {
+    return null;
+  }
+
+  return {
+    posterUrl: `${TMDB_IMAGE_BASE}${result.poster_path}`,
+    tmdbId: result.id,
+  };
+}
+
+async function searchTmdbMovie(movie, tmdbApiKey, includeYear) {
+  const url = new URL(`${TMDB_API_BASE}/search/movie`);
+  url.searchParams.set("api_key", tmdbApiKey);
+  url.searchParams.set("query", movie.title);
+  url.searchParams.set("include_adult", "false");
+
+  if (includeYear && movie.year) {
+    url.searchParams.set("year", movie.year);
+  }
+
+  const json = await fetchJson(url.toString());
+  const results = Array.isArray(json.results) ? json.results : [];
+  if (results.length === 0) {
+    return null;
+  }
+
+  return pickBestTmdbMatch(results, movie);
+}
+
+function pickBestTmdbMatch(results, movie) {
+  const normalizedMovieTitle = normalizeTitle(movie.title);
+
+  const scoredResults = results.map((result) => {
+    const resultTitle = result.title || result.original_title || "";
+    const normalizedResultTitle = normalizeTitle(resultTitle);
+    const releaseYear = result.release_date?.slice(0, 4) || "";
+
+    let score = 0;
+    if (normalizedResultTitle === normalizedMovieTitle) {
+      score += 5;
+    } else if (
+      normalizedResultTitle.includes(normalizedMovieTitle) ||
+      normalizedMovieTitle.includes(normalizedResultTitle)
+    ) {
+      score += 2;
+    }
+
+    if (movie.year && releaseYear === movie.year) {
+      score += 3;
+    }
+
+    if (result.poster_path) {
+      score += 1;
+    }
+
+    return { result, score };
+  });
+
+  scoredResults.sort((left, right) => right.score - left.score);
+  return scoredResults[0]?.result ?? null;
+}
+
+function normalizeTitle(value) {
+  return value
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, " ")
+    .trim();
 }
 
 function resolveDefaultEventDate(config) {
@@ -602,6 +687,22 @@ async function fetchText(url, options = {}) {
   }
 
   return response.text();
+}
+
+async function fetchJson(url) {
+  const response = await fetch(url, {
+    headers: {
+      Accept: "application/json",
+      "User-Agent":
+        "letterboxd-random-picker/1.0 (+https://github.com/actions/runner)",
+    },
+  });
+
+  if (!response.ok) {
+    throw new Error(`Request failed for ${url} (${response.status})`);
+  }
+
+  return response.json();
 }
 
 function base64UrlEncode(value) {

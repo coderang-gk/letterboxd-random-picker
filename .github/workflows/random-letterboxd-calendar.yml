@@ -62,6 +62,7 @@ jobs:
       EVENT_DURATION_MINUTES: ${{ github.event.inputs.event_duration_minutes }}
       DRY_RUN: ${{ github.event.inputs.dry_run }}
       OUTPUT_JSON_PATH: public/latest-movie.json
+      TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
       GOOGLE_CALENDAR_ID: ${{ secrets.GOOGLE_CALENDAR_ID }}
       GOOGLE_SERVICE_ACCOUNT_EMAIL: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_EMAIL }}
       GOOGLE_PRIVATE_KEY: ${{ secrets.GOOGLE_PRIVATE_KEY }}

@@ -7,6 +7,9 @@
     <color name="movie_muted">#6B7280</color>
     <color name="movie_card_stroke">#E6D7B7</color>
     <color name="wallpaper_backdrop">#121826</color>
+    <color name="movie_status_surface">#F0DFC1</color>
+    <color name="movie_status_stroke">#D8C19A</color>
+    <color name="movie_poster_stage">#EADBC0</color>
     <color name="launcher_background">#E9B44C</color>
     <color name="launcher_tile">#182331</color>
     <color name="launcher_detail">#FFF6E7</color>
