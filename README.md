@@ -1,11 +1,3 @@
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/c40b6c40-e8ea-465c-a35c-f72b9f434d4d" width="32%" />
-  <img src="https://github.com/user-attachments/assets/00a288c8-5a03-4589-9873-fba2721416fc" width="32%" />
-  <img src="https://github.com/user-attachments/assets/0a12ca25-94f3-4fd4-a569-fa4f846111bc" width="32%" />
-</p>
-
-<p align="center"><em>Wallpaper preview, movie details, and local calendar add flow</em></p>
-
 # Letterboxd Random Movie Calendar Action
 
 This repository contains:
@@ -42,6 +34,13 @@ For most users, the simple setup is the better default.
 7. Download and install the latest Android app release from the repository's Releases page.
 8. Paste your published feed URL into the app.
 9. Use the app to apply wallpaper and add the movie to your calendar locally.
+    <p align="center">
+  <img src="https://github.com/user-attachments/assets/c40b6c40-e8ea-465c-a35c-f72b9f434d4d" width="32%" />
+  <img src="https://github.com/user-attachments/assets/00a288c8-5a03-4589-9873-fba2721416fc" width="32%" />
+  <img src="https://github.com/user-attachments/assets/0a12ca25-94f3-4fd4-a569-fa4f846111bc" width="32%" />
+</p>
+
+<p align="center"><em>Wallpaper preview, movie details, and local calendar add flow</em></p>
 
 ## Full Automation Setup
 
