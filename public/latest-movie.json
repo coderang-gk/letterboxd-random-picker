@@ -1,29 +1,29 @@
 {
-  "id": "lbe63d5849b47f8cec5d4590ea840998",
-  "generatedAt": "2026-04-19T17:30:16.538Z",
+  "id": "lb95e39efe246dcdf8cfc8b49ba4fe04",
+  "generatedAt": "2026-04-23T13:06:50.391Z",
   "watchlistUrl": "https://letterboxd.com/coderang/watchlist/",
-  "scrapedMovieCount": 9,
+  "scrapedMovieCount": 10,
   "movie": {
-    "title": "Yi Yi",
-    "year": "2000",
-    "displayName": "Yi Yi (2000)",
-    "link": "https://letterboxd.com/film/yi-yi/",
-    "synopsis": "A Taipei family faces personal and moral uncertainty as everyday events test their relationships and sense of purpose.",
-    "posterUrl": "https://image.tmdb.org/t/p/original/mR8dSQZI8X6Z1NClJhFrtJp636z.jpg",
+    "title": "Fantastic Mr. Fox",
+    "year": "2009",
+    "displayName": "Fantastic Mr. Fox (2009)",
+    "link": "https://letterboxd.com/film/fantastic-mr-fox/",
+    "synopsis": "The Fantastic Mr. Fox, bored with his current life, plans a heist against the three local farmers. The farmers, tired of sharing their chickens with the sly fox, seek revenge against him and his family.",
+    "posterUrl": "https://image.tmdb.org/t/p/original/euZyZb6iGreujYKrGyZHRddhUYh.jpg",
     "posterSource": "tmdb",
     "genres": [],
     "directors": []
   },
   "event": {
-    "summary": "Watch: Yi Yi (2000)",
-    "description": "Random movie picked from a Letterboxd watchlist.\nMovie: Yi Yi (2000)\nSynopsis: A Taipei family faces personal and moral uncertainty as everyday events test their relationships and sense of purpose.\nPoster: https://image.tmdb.org/t/p/original/mR8dSQZI8X6Z1NClJhFrtJp636z.jpg\nLetterboxd: https://letterboxd.com/film/yi-yi/\nWatchlist: https://letterboxd.com/coderang/watchlist/",
-    "date": "2026-04-19",
+    "summary": "Watch: Fantastic Mr. Fox (2009)",
+    "description": "Random movie picked from a Letterboxd watchlist.\nMovie: Fantastic Mr. Fox (2009)\nSynopsis: The Fantastic Mr. Fox, bored with his current life, plans a heist against the three local farmers. The farmers, tired of sharing their chickens with the sly fox, seek revenge against him and his family.\nPoster: https://image.tmdb.org/t/p/original/euZyZb6iGreujYKrGyZHRddhUYh.jpg\nLetterboxd: https://letterboxd.com/film/fantastic-mr-fox/\nWatchlist: https://letterboxd.com/coderang/watchlist/",
+    "date": "2026-04-26",
     "start": {
-      "dateTime": "2026-04-19T22:30:00",
+      "dateTime": "2026-04-26T22:30:00",
       "timeZone": "Asia/Kolkata"
     },
     "end": {
-      "dateTime": "2026-04-20T01:00:00",
+      "dateTime": "2026-04-27T01:00:00",
       "timeZone": "Asia/Kolkata"
     }
   }
