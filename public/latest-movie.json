@@ -1,22 +1,22 @@
 {
-  "id": "lb95e39efe246dcdf8cfc8b49ba4fe04",
-  "generatedAt": "2026-04-23T13:06:50.391Z",
+  "id": "lb361ce3b35930849d448c5459aba2ed",
+  "generatedAt": "2026-04-26T17:33:24.332Z",
   "watchlistUrl": "https://letterboxd.com/coderang/watchlist/",
-  "scrapedMovieCount": 10,
+  "scrapedMovieCount": 11,
   "movie": {
-    "title": "Fantastic Mr. Fox",
-    "year": "2009",
-    "displayName": "Fantastic Mr. Fox (2009)",
-    "link": "https://letterboxd.com/film/fantastic-mr-fox/",
-    "synopsis": "The Fantastic Mr. Fox, bored with his current life, plans a heist against the three local farmers. The farmers, tired of sharing their chickens with the sly fox, seek revenge against him and his family.",
-    "posterUrl": "https://image.tmdb.org/t/p/original/euZyZb6iGreujYKrGyZHRddhUYh.jpg",
+    "title": "Chungking Express",
+    "year": "1994",
+    "displayName": "Chungking Express (1994)",
+    "link": "https://letterboxd.com/film/chungking-express/",
+    "synopsis": "Two melancholic Hong Kong policemen fall in love: one with a mysterious underworld figure, the other with a beautiful and ethereal server at a late-night restaurant.",
+    "posterUrl": "https://image.tmdb.org/t/p/original/43I9DcNoCzpyzK8JCkJYpHqHqGG.jpg",
     "posterSource": "tmdb",
     "genres": [],
     "directors": []
   },
   "event": {
-    "summary": "Watch: Fantastic Mr. Fox (2009)",
-    "description": "Random movie picked from a Letterboxd watchlist.\nMovie: Fantastic Mr. Fox (2009)\nSynopsis: The Fantastic Mr. Fox, bored with his current life, plans a heist against the three local farmers. The farmers, tired of sharing their chickens with the sly fox, seek revenge against him and his family.\nPoster: https://image.tmdb.org/t/p/original/euZyZb6iGreujYKrGyZHRddhUYh.jpg\nLetterboxd: https://letterboxd.com/film/fantastic-mr-fox/\nWatchlist: https://letterboxd.com/coderang/watchlist/",
+    "summary": "Watch: Chungking Express (1994)",
+    "description": "Random movie picked from a Letterboxd watchlist.\nMovie: Chungking Express (1994)\nSynopsis: Two melancholic Hong Kong policemen fall in love: one with a mysterious underworld figure, the other with a beautiful and ethereal server at a late-night restaurant.\nPoster: https://image.tmdb.org/t/p/original/43I9DcNoCzpyzK8JCkJYpHqHqGG.jpg\nLetterboxd: https://letterboxd.com/film/chungking-express/\nWatchlist: https://letterboxd.com/coderang/watchlist/",
     "date": "2026-04-26",
     "start": {
       "dateTime": "2026-04-26T22:30:00",
