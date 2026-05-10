@@ -1,29 +1,29 @@
 {
-  "id": "lb7dadc6f7f00b0b397be6fa57b569a7",
-  "generatedAt": "2026-05-03T17:41:03.206Z",
+  "id": "lb50e624a9aaa8e49fb96ba06e9a1dad",
+  "generatedAt": "2026-05-10T17:44:25.560Z",
   "watchlistUrl": "https://letterboxd.com/coderang/watchlist/",
   "scrapedMovieCount": 11,
   "movie": {
-    "title": "Manchester by the Sea",
-    "year": "2016",
-    "displayName": "Manchester by the Sea (2016)",
-    "link": "https://letterboxd.com/film/manchester-by-the-sea/",
-    "synopsis": "After his older brother passes away, Lee Chandler is forced to return home to care for his 16-year-old nephew. There he is compelled to deal with a tragic past that separated him from his family and the community where he was born and raised.",
-    "posterUrl": "https://image.tmdb.org/t/p/original/o9VXYOuaJxCEKOxbA86xqtwmqYn.jpg",
+    "title": "In the Mood for Love",
+    "year": "2000",
+    "displayName": "In the Mood for Love (2000)",
+    "link": "https://letterboxd.com/film/in-the-mood-for-love/",
+    "synopsis": "Two neighbors form a strong bond after both suspect extramarital activities of their spouses. However, they agree to keep their bond platonic so as not to commit similar wrongs.",
+    "posterUrl": "https://image.tmdb.org/t/p/original/iYypPT4bhqXfq1b6EnmxvRt6b2Y.jpg",
     "posterSource": "tmdb",
     "genres": [],
     "directors": []
   },
   "event": {
-    "summary": "Watch: Manchester by the Sea (2016)",
-    "description": "Random movie picked from a Letterboxd watchlist.\nMovie: Manchester by the Sea (2016)\nSynopsis: After his older brother passes away, Lee Chandler is forced to return home to care for his 16-year-old nephew. There he is compelled to deal with a tragic past that separated him from his family and the community where he was born and raised.\nPoster: https://image.tmdb.org/t/p/original/o9VXYOuaJxCEKOxbA86xqtwmqYn.jpg\nLetterboxd: https://letterboxd.com/film/manchester-by-the-sea/\nWatchlist: https://letterboxd.com/coderang/watchlist/",
-    "date": "2026-05-03",
+    "summary": "Watch: In the Mood for Love (2000)",
+    "description": "Random movie picked from a Letterboxd watchlist.\nMovie: In the Mood for Love (2000)\nSynopsis: Two neighbors form a strong bond after both suspect extramarital activities of their spouses. However, they agree to keep their bond platonic so as not to commit similar wrongs.\nPoster: https://image.tmdb.org/t/p/original/iYypPT4bhqXfq1b6EnmxvRt6b2Y.jpg\nLetterboxd: https://letterboxd.com/film/in-the-mood-for-love/\nWatchlist: https://letterboxd.com/coderang/watchlist/",
+    "date": "2026-05-10",
     "start": {
-      "dateTime": "2026-05-03T22:30:00",
+      "dateTime": "2026-05-10T22:30:00",
       "timeZone": "Asia/Kolkata"
     },
     "end": {
-      "dateTime": "2026-05-04T01:00:00",
+      "dateTime": "2026-05-11T01:00:00",
       "timeZone": "Asia/Kolkata"
     }
   }
