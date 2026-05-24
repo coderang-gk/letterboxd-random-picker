@@ -1,29 +1,29 @@
 {
-  "id": "lb0733572eaa5b55c075c127d4b58a6c",
-  "generatedAt": "2026-05-17T17:52:51.059Z",
+  "id": "lb640256cd3135f4f07337a73574e974",
+  "generatedAt": "2026-05-24T17:54:32.868Z",
   "watchlistUrl": "https://letterboxd.com/coderang/watchlist/",
   "scrapedMovieCount": 11,
   "movie": {
-    "title": "In the Mood for Love",
-    "year": "2000",
-    "displayName": "In the Mood for Love (2000)",
-    "link": "https://letterboxd.com/film/in-the-mood-for-love/",
-    "synopsis": "Two neighbors form a strong bond after both suspect extramarital activities of their spouses. However, they agree to keep their bond platonic so as not to commit similar wrongs.",
-    "posterUrl": "https://image.tmdb.org/t/p/original/iYypPT4bhqXfq1b6EnmxvRt6b2Y.jpg",
+    "title": "Incendies",
+    "year": "2010",
+    "displayName": "Incendies (2010)",
+    "link": "https://letterboxd.com/film/incendies/",
+    "synopsis": "A mother&#039;s last wishes send twins Jeanne and Simon on a journey to Middle East in search of their tangled roots. Adapted from Wajdi Mouawad&#039;s acclaimed play, Incendies tells the powerful and moving tale of two young adults&#039; voyage to the core of deep-rooted hatred, never-ending wars and enduring love.",
+    "posterUrl": "https://image.tmdb.org/t/p/original/yH6DAQVgbyj72S66gN4WWVoTjuf.jpg",
     "posterSource": "tmdb",
     "genres": [],
     "directors": []
   },
   "event": {
-    "summary": "Watch: In the Mood for Love (2000)",
-    "description": "Random movie picked from a Letterboxd watchlist.\nMovie: In the Mood for Love (2000)\nSynopsis: Two neighbors form a strong bond after both suspect extramarital activities of their spouses. However, they agree to keep their bond platonic so as not to commit similar wrongs.\nPoster: https://image.tmdb.org/t/p/original/iYypPT4bhqXfq1b6EnmxvRt6b2Y.jpg\nLetterboxd: https://letterboxd.com/film/in-the-mood-for-love/\nWatchlist: https://letterboxd.com/coderang/watchlist/",
-    "date": "2026-05-17",
+    "summary": "Watch: Incendies (2010)",
+    "description": "Random movie picked from a Letterboxd watchlist.\nMovie: Incendies (2010)\nSynopsis: A mother&#039;s last wishes send twins Jeanne and Simon on a journey to Middle East in search of their tangled roots. Adapted from Wajdi Mouawad&#039;s acclaimed play, Incendies tells the powerful and moving tale of two young adults&#039; voyage to the core of deep-rooted hatred, never-ending wars and enduring love.\nPoster: https://image.tmdb.org/t/p/original/yH6DAQVgbyj72S66gN4WWVoTjuf.jpg\nLetterboxd: https://letterboxd.com/film/incendies/\nWatchlist: https://letterboxd.com/coderang/watchlist/",
+    "date": "2026-05-24",
     "start": {
-      "dateTime": "2026-05-17T22:30:00",
+      "dateTime": "2026-05-24T22:30:00",
       "timeZone": "Asia/Kolkata"
     },
     "end": {
-      "dateTime": "2026-05-18T01:00:00",
+      "dateTime": "2026-05-25T01:00:00",
       "timeZone": "Asia/Kolkata"
     }
   }
