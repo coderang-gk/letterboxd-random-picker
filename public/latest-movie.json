@@ -1,29 +1,29 @@
 {
-  "id": "lb7a24b6449873ac7753de5cdbb4924a",
-  "generatedAt": "2026-06-07T17:59:44.593Z",
+  "id": "lbfd5f451a59f5a13259658a9356836d",
+  "generatedAt": "2026-06-14T18:08:06.198Z",
   "watchlistUrl": "https://letterboxd.com/coderang/watchlist/",
   "scrapedMovieCount": 11,
   "movie": {
-    "title": "In the Mood for Love",
-    "year": "2000",
-    "displayName": "In the Mood for Love (2000)",
-    "link": "https://letterboxd.com/film/in-the-mood-for-love/",
-    "synopsis": "Two neighbors form a strong bond after both suspect extramarital activities of their spouses. However, they agree to keep their bond platonic so as not to commit similar wrongs.",
-    "posterUrl": "https://image.tmdb.org/t/p/original/iYypPT4bhqXfq1b6EnmxvRt6b2Y.jpg",
+    "title": "The Royal Tenenbaums",
+    "year": "2001",
+    "displayName": "The Royal Tenenbaums (2001)",
+    "link": "https://letterboxd.com/film/the-royal-tenenbaums/",
+    "synopsis": "Royal Tenenbaum and his wife Etheline had three children and then they separated. All three children are extraordinary --- all geniuses. Virtually all memory of the brilliance of the young Tenenbaums was subsequently erased by two decades of betrayal, failure, and disaster. Most of this was generally considered to be their father&#039;s fault. \"The Royal Tenenbaums\" is the story of the family&#039;s sudden, unexpected reunion one recent winter.",
+    "posterUrl": "https://image.tmdb.org/t/p/original/nG7hZJn7wQTSDCQT39Gy3s3tbrp.jpg",
     "posterSource": "tmdb",
     "genres": [],
     "directors": []
   },
   "event": {
-    "summary": "Watch: In the Mood for Love (2000)",
-    "description": "Random movie picked from a Letterboxd watchlist.\nMovie: In the Mood for Love (2000)\nSynopsis: Two neighbors form a strong bond after both suspect extramarital activities of their spouses. However, they agree to keep their bond platonic so as not to commit similar wrongs.\nPoster: https://image.tmdb.org/t/p/original/iYypPT4bhqXfq1b6EnmxvRt6b2Y.jpg\nLetterboxd: https://letterboxd.com/film/in-the-mood-for-love/\nWatchlist: https://letterboxd.com/coderang/watchlist/",
-    "date": "2026-06-07",
+    "summary": "Watch: The Royal Tenenbaums (2001)",
+    "description": "Random movie picked from a Letterboxd watchlist.\nMovie: The Royal Tenenbaums (2001)\nSynopsis: Royal Tenenbaum and his wife Etheline had three children and then they separated. All three children are extraordinary --- all geniuses. Virtually all memory of the brilliance of the young Tenenbaums was subsequently erased by two decades of betrayal, failure, and disaster. Most of this was generally considered to be their father&#039;s fault. \"The Royal Tenenbaums\" is the story of the family&#039;s sudden, unexpected reunion one recent winter.\nPoster: https://image.tmdb.org/t/p/original/nG7hZJn7wQTSDCQT39Gy3s3tbrp.jpg\nLetterboxd: https://letterboxd.com/film/the-royal-tenenbaums/\nWatchlist: https://letterboxd.com/coderang/watchlist/",
+    "date": "2026-06-14",
     "start": {
-      "dateTime": "2026-06-07T22:30:00",
+      "dateTime": "2026-06-14T22:30:00",
       "timeZone": "Asia/Kolkata"
     },
     "end": {
-      "dateTime": "2026-06-08T01:00:00",
+      "dateTime": "2026-06-15T01:00:00",
       "timeZone": "Asia/Kolkata"
     }
   }
