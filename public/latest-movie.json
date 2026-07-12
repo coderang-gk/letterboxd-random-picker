@@ -1,29 +1,29 @@
 {
-  "id": "lb4d91d5db52863cb73503e74acd671c",
-  "generatedAt": "2026-07-05T17:57:03.130Z",
+  "id": "lb070e1295486a5f83e48211069cc51d",
+  "generatedAt": "2026-07-12T17:54:24.280Z",
   "watchlistUrl": "https://letterboxd.com/coderang/watchlist/",
   "scrapedMovieCount": 11,
   "movie": {
-    "title": "It Was Just an Accident",
+    "title": "Mickey 17",
     "year": "2025",
-    "displayName": "It Was Just an Accident (2025)",
-    "link": "https://letterboxd.com/film/it-was-just-an-accident/",
-    "synopsis": "An unassuming mechanic is reminded of his time in an Iranian prison when he encounters a man he suspects to be his sadistic jailhouse captor.",
-    "posterUrl": "https://image.tmdb.org/t/p/original/eNYGj2DG3n8OrVPTfYunpPW9uas.jpg",
+    "displayName": "Mickey 17 (2025)",
+    "link": "https://letterboxd.com/film/mickey-17/",
+    "synopsis": "Unlikely hero Mickey Barnes finds himself in the extraordinary circumstance of working for an employer who demands the ultimate commitment to the job… to die, for a living.",
+    "posterUrl": "https://image.tmdb.org/t/p/original/edKpE9B5qN3e559OuMCLZdW1iBZ.jpg",
     "posterSource": "tmdb",
     "genres": [],
     "directors": []
   },
   "event": {
-    "summary": "Watch: It Was Just an Accident (2025)",
-    "description": "Random movie picked from a Letterboxd watchlist.\nMovie: It Was Just an Accident (2025)\nSynopsis: An unassuming mechanic is reminded of his time in an Iranian prison when he encounters a man he suspects to be his sadistic jailhouse captor.\nPoster: https://image.tmdb.org/t/p/original/eNYGj2DG3n8OrVPTfYunpPW9uas.jpg\nLetterboxd: https://letterboxd.com/film/it-was-just-an-accident/\nWatchlist: https://letterboxd.com/coderang/watchlist/",
-    "date": "2026-07-05",
+    "summary": "Watch: Mickey 17 (2025)",
+    "description": "Random movie picked from a Letterboxd watchlist.\nMovie: Mickey 17 (2025)\nSynopsis: Unlikely hero Mickey Barnes finds himself in the extraordinary circumstance of working for an employer who demands the ultimate commitment to the job… to die, for a living.\nPoster: https://image.tmdb.org/t/p/original/edKpE9B5qN3e559OuMCLZdW1iBZ.jpg\nLetterboxd: https://letterboxd.com/film/mickey-17/\nWatchlist: https://letterboxd.com/coderang/watchlist/",
+    "date": "2026-07-12",
     "start": {
-      "dateTime": "2026-07-05T22:30:00",
+      "dateTime": "2026-07-12T22:30:00",
       "timeZone": "Asia/Kolkata"
     },
     "end": {
-      "dateTime": "2026-07-06T01:00:00",
+      "dateTime": "2026-07-13T01:00:00",
       "timeZone": "Asia/Kolkata"
     }
   }
