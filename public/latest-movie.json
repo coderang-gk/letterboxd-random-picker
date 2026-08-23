@@ -1,29 +1,29 @@
 {
-  "id": "lb366ae4c8c62b2584858345c1a90e2b",
-  "generatedAt": "2026-08-16T17:13:10.221Z",
+  "id": "lb365b1dd4fdfd0de876dfe31f59456e",
+  "generatedAt": "2026-08-23T17:13:55.989Z",
   "watchlistUrl": "https://letterboxd.com/coderang/watchlist/",
   "scrapedMovieCount": 11,
   "movie": {
-    "title": "Mickey 17",
-    "year": "2025",
-    "displayName": "Mickey 17 (2025)",
-    "link": "https://letterboxd.com/film/mickey-17/",
-    "synopsis": "Unlikely hero Mickey Barnes finds himself in the extraordinary circumstance of working for an employer who demands the ultimate commitment to the job… to die, for a living.",
-    "posterUrl": "https://image.tmdb.org/t/p/original/edKpE9B5qN3e559OuMCLZdW1iBZ.jpg",
+    "title": "Yi Yi",
+    "year": "2000",
+    "displayName": "Yi Yi (2000)",
+    "link": "https://letterboxd.com/film/yi-yi/",
+    "synopsis": "A Taipei family faces personal and moral uncertainty as everyday events test their relationships and sense of purpose.",
+    "posterUrl": "https://image.tmdb.org/t/p/original/mR8dSQZI8X6Z1NClJhFrtJp636z.jpg",
     "posterSource": "tmdb",
     "genres": [],
     "directors": []
   },
   "event": {
-    "summary": "Watch: Mickey 17 (2025)",
-    "description": "Random movie picked from a Letterboxd watchlist.\nMovie: Mickey 17 (2025)\nSynopsis: Unlikely hero Mickey Barnes finds himself in the extraordinary circumstance of working for an employer who demands the ultimate commitment to the job… to die, for a living.\nPoster: https://image.tmdb.org/t/p/original/edKpE9B5qN3e559OuMCLZdW1iBZ.jpg\nLetterboxd: https://letterboxd.com/film/mickey-17/\nWatchlist: https://letterboxd.com/coderang/watchlist/",
-    "date": "2026-08-16",
+    "summary": "Watch: Yi Yi (2000)",
+    "description": "Random movie picked from a Letterboxd watchlist.\nMovie: Yi Yi (2000)\nSynopsis: A Taipei family faces personal and moral uncertainty as everyday events test their relationships and sense of purpose.\nPoster: https://image.tmdb.org/t/p/original/mR8dSQZI8X6Z1NClJhFrtJp636z.jpg\nLetterboxd: https://letterboxd.com/film/yi-yi/\nWatchlist: https://letterboxd.com/coderang/watchlist/",
+    "date": "2026-08-23",
     "start": {
-      "dateTime": "2026-08-16T22:30:00",
+      "dateTime": "2026-08-23T22:30:00",
       "timeZone": "Asia/Kolkata"
     },
     "end": {
-      "dateTime": "2026-08-17T01:00:00",
+      "dateTime": "2026-08-24T01:00:00",
       "timeZone": "Asia/Kolkata"
     }
   }
