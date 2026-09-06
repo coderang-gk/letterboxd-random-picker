@@ -1,6 +1,6 @@
 {
-  "id": "lb7742610519f24cd86818dc60af6e60",
-  "generatedAt": "2026-08-30T19:35:10.799Z",
+  "id": "lb0e59760f79e9362d6808ad10813edc",
+  "generatedAt": "2026-09-06T18:46:31.509Z",
   "watchlistUrl": "https://letterboxd.com/coderang/watchlist/",
   "scrapedMovieCount": 11,
   "movie": {
@@ -17,13 +17,13 @@
   "event": {
     "summary": "Watch: Manchester by the Sea (2016)",
     "description": "Random movie picked from a Letterboxd watchlist.\nMovie: Manchester by the Sea (2016)\nSynopsis: After his older brother passes away, Lee Chandler is forced to return home to care for his 16-year-old nephew. There he is compelled to deal with a tragic past that separated him from his family and the community where he was born and raised.\nPoster: https://image.tmdb.org/t/p/original/o9VXYOuaJxCEKOxbA86xqtwmqYn.jpg\nLetterboxd: https://letterboxd.com/film/manchester-by-the-sea/\nWatchlist: https://letterboxd.com/coderang/watchlist/",
-    "date": "2026-09-06",
+    "date": "2026-09-13",
     "start": {
-      "dateTime": "2026-09-06T22:30:00",
+      "dateTime": "2026-09-13T22:30:00",
       "timeZone": "Asia/Kolkata"
     },
     "end": {
-      "dateTime": "2026-09-07T01:00:00",
+      "dateTime": "2026-09-14T01:00:00",
       "timeZone": "Asia/Kolkata"
     }
   }
