@@ -1,6 +1,6 @@
 {
-  "id": "lbe60c6c6723b16d5d0f8096010b3480",
-  "generatedAt": "2026-10-11T20:43:33.109Z",
+  "id": "lbb046e8e1110efa588f455fe632bc38",
+  "generatedAt": "2026-10-18T19:08:39.980Z",
   "watchlistUrl": "https://letterboxd.com/coderang/watchlist/",
   "scrapedMovieCount": 11,
   "movie": {
@@ -17,13 +17,13 @@
   "event": {
     "summary": "Watch: It Was Just an Accident (2025)",
     "description": "Random movie picked from a Letterboxd watchlist.\nMovie: It Was Just an Accident (2025)\nSynopsis: An unassuming mechanic is reminded of his time in an Iranian prison when he encounters a man he suspects to be his sadistic jailhouse captor.\nPoster: https://image.tmdb.org/t/p/original/eNYGj2DG3n8OrVPTfYunpPW9uas.jpg\nLetterboxd: https://letterboxd.com/film/it-was-just-an-accident/\nWatchlist: https://letterboxd.com/coderang/watchlist/",
-    "date": "2026-10-18",
+    "date": "2026-10-25",
     "start": {
-      "dateTime": "2026-10-18T22:30:00",
+      "dateTime": "2026-10-25T22:30:00",
       "timeZone": "Asia/Kolkata"
     },
     "end": {
-      "dateTime": "2026-10-19T01:00:00",
+      "dateTime": "2026-10-26T01:00:00",
       "timeZone": "Asia/Kolkata"
     }
   }
