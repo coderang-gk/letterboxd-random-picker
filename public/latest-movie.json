@@ -1,29 +1,29 @@
 {
-  "id": "lb0b76469ccddb966fdc76754910f13d",
-  "generatedAt": "2026-10-25T19:24:16.119Z",
+  "id": "lb2ca859633451c2b222346fc3dc8f47",
+  "generatedAt": "2026-11-01T20:54:43.464Z",
   "watchlistUrl": "https://letterboxd.com/coderang/watchlist/",
   "scrapedMovieCount": 11,
   "movie": {
-    "title": "Perfect Days",
-    "year": "2023",
-    "displayName": "Perfect Days (2023)",
-    "link": "https://letterboxd.com/film/perfect-days-2023/",
-    "synopsis": "Hirayama is content with his life as a toilet cleaner in Tokyo. Outside of his structured routine, he cherishes music on cassette tapes, books, and taking photos of trees. Through unexpected encounters, he reflects on finding beauty in the world.",
-    "posterUrl": "https://image.tmdb.org/t/p/original/tvUHVSTJV9ITON3oyHaWp7oaAc8.jpg",
+    "title": "Yi Yi",
+    "year": "2000",
+    "displayName": "Yi Yi (2000)",
+    "link": "https://letterboxd.com/film/yi-yi/",
+    "synopsis": "A Taipei family faces personal and moral uncertainty as everyday events test their relationships and sense of purpose.",
+    "posterUrl": "https://image.tmdb.org/t/p/original/mR8dSQZI8X6Z1NClJhFrtJp636z.jpg",
     "posterSource": "tmdb",
     "genres": [],
     "directors": []
   },
   "event": {
-    "summary": "Watch: Perfect Days (2023)",
-    "description": "Random movie picked from a Letterboxd watchlist.\nMovie: Perfect Days (2023)\nSynopsis: Hirayama is content with his life as a toilet cleaner in Tokyo. Outside of his structured routine, he cherishes music on cassette tapes, books, and taking photos of trees. Through unexpected encounters, he reflects on finding beauty in the world.\nPoster: https://image.tmdb.org/t/p/original/tvUHVSTJV9ITON3oyHaWp7oaAc8.jpg\nLetterboxd: https://letterboxd.com/film/perfect-days-2023/\nWatchlist: https://letterboxd.com/coderang/watchlist/",
-    "date": "2026-11-01",
+    "summary": "Watch: Yi Yi (2000)",
+    "description": "Random movie picked from a Letterboxd watchlist.\nMovie: Yi Yi (2000)\nSynopsis: A Taipei family faces personal and moral uncertainty as everyday events test their relationships and sense of purpose.\nPoster: https://image.tmdb.org/t/p/original/mR8dSQZI8X6Z1NClJhFrtJp636z.jpg\nLetterboxd: https://letterboxd.com/film/yi-yi/\nWatchlist: https://letterboxd.com/coderang/watchlist/",
+    "date": "2026-11-08",
     "start": {
-      "dateTime": "2026-11-01T22:30:00",
+      "dateTime": "2026-11-08T22:30:00",
       "timeZone": "Asia/Kolkata"
     },
     "end": {
-      "dateTime": "2026-11-02T01:00:00",
+      "dateTime": "2026-11-09T01:00:00",
       "timeZone": "Asia/Kolkata"
     }
   }
